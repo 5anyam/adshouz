@@ -1,18 +1,17 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Syne } from 'next/font/google';
+import { ThemeProvider } from 'next-themes';          // ← NEW
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/sonner";
 
-// Body font — clean, readable
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 });
 
-// Display/heading font — bold, modern (matches Marko vibe)
 const syne = Syne({
   subsets: ['latin'],
   variable: '--font-syne',
@@ -90,14 +89,14 @@ export const metadata: Metadata = {
 };
 
 // ─── JSON-LD Schema ────────────────────────────────────────────────────────────
+// ↓ Phone + email updated
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
-    // Organization schema
     {
       '@type': 'Organization',
       '@id': 'https://rigvedaadds.com/#organization',
-      name: 'Rigveda Ads',
+      name: 'Rigveda Ads Agency Pvt. Ltd.',
       url: 'https://rigvedaadds.com',
       logo: {
         '@type': 'ImageObject',
@@ -110,17 +109,18 @@ const jsonLd = {
       foundingDate: '2016',
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Delhi',
+        streetAddress: 'D-7/296, 2nd Floor, Sector-6, Rohini',
+        addressLocality: 'New Delhi',
         addressRegion: 'Delhi',
-        postalCode: '110001',
+        postalCode: '110086',
         addressCountry: 'IN',
       },
       contactPoint: [
         {
           '@type': 'ContactPoint',
-          telephone: '+91-XXXXXXXXXX',
+          telephone: '+91-7840000618',          // ← updated
           contactType: 'customer service',
-          email: 'contact@rigvedaadds.com',
+          email: 'info@rigvedaadds.com',         // ← updated
           availableLanguage: ['English', 'Hindi'],
           areaServed: 'IN',
         },
@@ -132,41 +132,37 @@ const jsonLd = {
         'https://twitter.com/rigvedaadds',
       ],
     },
-    // LocalBusiness schema (helps with Google Ads Quality Score for local intent)
     {
       '@type': 'LocalBusiness',
       '@id': 'https://rigvedaadds.com/#localbusiness',
-      name: 'Rigveda Ads',
+      name: 'Rigveda Ads Agency Pvt. Ltd.',
       url: 'https://rigvedaadds.com',
       image: 'https://rigvedaadds.com/og-image.jpg',
       priceRange: '₹₹',
-      telephone: '+91-XXXXXXXXXX',
-      email: 'contact@rigvedaadds.com',
+      telephone: '+91-7840000618',              // ← updated
+      email: 'info@rigvedaadds.com',             // ← updated
       address: {
         '@type': 'PostalAddress',
-        addressLocality: 'Delhi',
+        streetAddress: 'D-7/296, 2nd Floor, Sector-6, Rohini',
+        addressLocality: 'New Delhi',
         addressRegion: 'Delhi',
-        postalCode: '110001',
+        postalCode: '110086',
         addressCountry: 'IN',
       },
       openingHoursSpecification: {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        opens: '09:00',
+        opens: '10:00',
         closes: '19:00',
       },
     },
-    // Professional Service schema
     {
       '@type': 'ProfessionalService',
       '@id': 'https://rigvedaadds.com/#service',
       name: 'Google Ads & Performance Marketing',
       provider: { '@id': 'https://rigvedaadds.com/#organization' },
       serviceType: 'Digital Marketing Agency',
-      areaServed: {
-        '@type': 'Country',
-        name: 'India',
-      },
+      areaServed: { '@type': 'Country', name: 'India' },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Digital Marketing Services',
@@ -180,7 +176,6 @@ const jsonLd = {
         ],
       },
     },
-    // WebSite schema (enables Sitelinks Searchbox in Google)
     {
       '@type': 'WebSite',
       '@id': 'https://rigvedaadds.com/#website',
@@ -202,14 +197,17 @@ const jsonLd = {
 // ─── Root Layout ──────────────────────────────────────────────────────────────
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${syne.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${syne.variable}`}
+      suppressHydrationWarning   // ← CHANGE 1: prevents next-themes hydration flash
+    >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta name="theme-color" content="#0B0B0F" />
-        {/* Preconnect for performance */}
+        {/* theme-color removed from here — handled dynamically below */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
@@ -217,20 +215,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} font-sans bg-[#0B0B0F] text-white antialiased`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <Toaster
-          theme="dark"
-          toastOptions={{
-            style: {
-              background: '#13131A',
-              border: '1px solid rgba(255,255,255,0.08)',
-              color: '#fff',
-            },
-          }}
-        />
+      <body className={`${inter.variable} font-sans antialiased bg-[#0B0B0F] text-white`}>
+
+        {/* CHANGE 2: Wrap everything in ThemeProvider */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange={false}
+        >
+          {/* CHANGE 3: Dynamic theme-color meta for mobile browser chrome */}
+          <meta name="theme-color" content="#0B0B0F" media="(prefers-color-scheme: dark)" />
+          <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)" />
+
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+
+          {/* CHANGE 4: Toaster now reads theme from ThemeProvider context */}
+          <Toaster
+            theme="system"
+            toastOptions={{
+              classNames: {
+                toast: "dark:bg-[#13131A] dark:border-white/8 dark:text-white bg-white border-black/10 text-gray-900",
+              },
+            }}
+          />
+        </ThemeProvider>
       </body>
     </html>
   );

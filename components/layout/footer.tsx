@@ -1,47 +1,67 @@
 import Link from "next/link";
-import Image from "next/image";
 import {
   Phone, Mail, MapPin, MessageSquare,
   Facebook, Twitter, Linkedin, Instagram,
-  ExternalLink, ArrowUpRight, Zap
+  ArrowUpRight, Zap
 } from "lucide-react";
 
+// ─── Constants ────────────────────────────────────────────────────────────────
+const PHONE      = "+917840000618";
+const PHONE_DISP = "+91 78400 00618";
+const EMAIL      = "info@rigvedaadds.com";
+
+// ─── Text Logo ────────────────────────────────────────────────────────────────
+function Logo() {
+  return (
+    <div className="flex flex-col leading-none select-none">
+      <span className="font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300 text-[24px]">
+        Rigveda
+      </span>
+      <span className="font-semibold tracking-widest uppercase text-white/40 text-[8px] mt-0.5">
+        Ads Agency Pvt. Ltd.
+      </span>
+    </div>
+  );
+}
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
 const quickLinks = [
-  { label: "About Us",            href: "/about" },
-  { label: "Our Services",        href: "/services" },
-  { label: "Case Studies",        href: "/case-studies" },
-  { label: "Blog & Insights",     href: "/blogs" },
-  { label: "Careers",             href: "/career" },
-  { label: "Contact Us",          href: "/contact" },
+  { label: "About Us",        href: "/about" },
+  { label: "Our Services",    href: "/services" },
+  { label: "Case Studies",    href: "/case-studies" },
+  { label: "Blog & Insights", href: "/blogs" },
+  { label: "Careers",         href: "/career" },
+  { label: "Contact Us",      href: "/contact" },
 ];
 
 const services = [
-  { label: "Google Ads (PPC)",        href: "/services/google-ads" },
-  { label: "SEO & Organic Growth",    href: "/services/seo" },
-  { label: "Facebook & Instagram Ads",href: "/services/social-media-ads" },
-  { label: "Brand Bidding",           href: "/services/brand-bidding" },
-  { label: "Performance Marketing",   href: "/services/performance-marketing" },
-  { label: "International Campaigns", href: "/services/international-campaigns" },
-  { label: "YouTube Advertising",     href: "/services/youtube-ads" },
-  { label: "Website Development",     href: "/services/website-development" },
+  { label: "Google Ads (PPC)",         href: "/services/google-ads" },
+  { label: "SEO & Organic Growth",     href: "/services/seo" },
+  { label: "Facebook & Instagram Ads", href: "/services/social-media-ads" },
+  { label: "Brand Bidding",            href: "/services/brand-bidding" },
+  { label: "Performance Marketing",    href: "/services/performance-marketing" },
+  { label: "International Campaigns",  href: "/services/international-campaigns" },
+  { label: "YouTube Advertising",      href: "/services/youtube-ads" },
+  { label: "Website Development",      href: "/services/website-development" },
 ];
 
 const usefulLinks = [
-  { label: "Google Ads Manager",   href: "https://ads.google.com" },
-  { label: "Google Analytics",     href: "https://analytics.google.com" },
-  { label: "Google Search Console",href: "https://search.google.com/search-console" },
-  { label: "Meta Ads Manager",     href: "https://www.facebook.com/adsmanager" },
+  { label: "Google Ads Manager",    href: "https://ads.google.com" },
+  { label: "Google Analytics",      href: "https://analytics.google.com" },
+  { label: "Google Search Console", href: "https://search.google.com/search-console" },
+  { label: "Meta Ads Manager",      href: "https://www.facebook.com/adsmanager" },
   { label: "Google Merchant Center",href: "https://merchants.google.com" },
-  { label: "Disclaimer",           href: "/disclaimer", internal: true },
+  { label: "Disclaimer",            href: "/disclaimer", internal: true },
 ];
 
 const socialLinks = [
-  { icon: Facebook,  href: "https://www.facebook.com/rigvedaadds",  label: "Facebook" },
-  { icon: Instagram, href: "https://www.instagram.com/rigvedaadds", label: "Instagram" },
-  { icon: Linkedin,  href: "https://www.linkedin.com/company/rigvedaadds", label: "LinkedIn" },
-  { icon: Twitter,   href: "https://twitter.com/rigvedaadds",       label: "X (Twitter)" },
+  { icon: Facebook,  href: "https://www.facebook.com/rigvedaadds",       label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/rigvedaadds",      label: "Instagram" },
+  { icon: Linkedin,  href: "https://www.linkedin.com/company/rigvedaadds",label: "LinkedIn" },
+  { icon: Twitter,   href: "https://twitter.com/rigvedaadds",             label: "X (Twitter)" },
 ];
 
+// ─── Footer ───────────────────────────────────────────────────────────────────
 export function Footer() {
   return (
     <footer className="bg-[#0B0B0F] text-white relative overflow-hidden">
@@ -58,24 +78,19 @@ export function Footer() {
 
             {/* ── Company Info */}
             <div className="lg:col-span-1">
-              <Link href="/" className="inline-flex items-center gap-2.5 mb-6 group">
-                <div className="relative w-36 h-12">
-                  <Image
-                    src="/LOGO.png"
-                    alt="Rigveda Ads"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+              {/* Text logo — replaces <Image> */}
+              <Link href="/" className="inline-block mb-6">
+                <Logo />
               </Link>
 
               <p className="text-white/40 mb-7 leading-relaxed text-sm">
-                Rigveda Ads is a certified Google Ads &amp; performance marketing agency 
-                delivering data-driven campaigns with proven ROI — across all industries in 
+                Rigveda Ads is a certified Google Ads &amp; performance marketing agency
+                delivering data-driven campaigns with proven ROI — across all industries in
                 India and internationally.
               </p>
 
               <div className="space-y-3.5">
+                {/* Address */}
                 <div className="flex items-start gap-3">
                   <MapPin className="h-4 w-4 text-violet-400 mt-0.5 flex-shrink-0" />
                   <div className="text-sm text-white/50 leading-snug">
@@ -84,39 +99,38 @@ export function Footer() {
                   </div>
                 </div>
 
+                {/* Phone — single updated number */}
                 <div className="flex items-start gap-3">
                   <Phone className="h-4 w-4 text-violet-400 mt-0.5 flex-shrink-0" />
-                  <div className="text-sm space-y-1">
-                    <a href="tel:+918800343499"
-                      className="block text-white/50 hover:text-white transition-colors duration-200">
-                      +91 8800343499
-                    </a>
-                    <a href="tel:+919868428811"
-                      className="block text-white/50 hover:text-white transition-colors duration-200">
-                      +91 9868428811
-                    </a>
-                  </div>
+                  <a
+                    href={`tel:${PHONE}`}
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-200"
+                  >
+                    {PHONE_DISP}
+                  </a>
                 </div>
 
+                {/* WhatsApp — same number */}
                 <div className="flex items-center gap-3">
                   <MessageSquare className="h-4 w-4 text-violet-400 flex-shrink-0" />
                   <a
-                    href="https://wa.me/919811657065"
+                    href={`https://wa.me/${PHONE}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm text-white/50 hover:text-white transition-colors duration-200"
                   >
-                    +91 9811657065 (WhatsApp)
+                    {PHONE_DISP} (WhatsApp)
                   </a>
                 </div>
 
+                {/* Email */}
                 <div className="flex items-center gap-3">
                   <Mail className="h-4 w-4 text-violet-400 flex-shrink-0" />
                   <a
-                    href="mailto:contact@rigvedaadds.com"
+                    href={`mailto:${EMAIL}`}
                     className="text-sm text-white/50 hover:text-white transition-colors duration-200"
                   >
-                    contact@rigvedaadds.com
+                    {EMAIL}
                   </a>
                 </div>
               </div>
@@ -179,13 +193,13 @@ export function Footer() {
               </div>
             </div>
 
-            {/* ── Info + Social */}
+            {/* ── Agency Info + Social */}
             <div>
               <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6">
                 Agency Info
               </h3>
 
-              {/* Hours */}
+              {/* Working Hours */}
               <div className="mb-6 bg-white/[0.03] border border-white/5 rounded-xl p-4">
                 <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-3">
                   Working Hours
@@ -202,7 +216,7 @@ export function Footer() {
                 </div>
               </div>
 
-              {/* Credentials */}
+              {/* Why Us */}
               <div className="mb-7 bg-white/[0.03] border border-white/5 rounded-xl p-4">
                 <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-3">
                   Why Us
@@ -244,15 +258,7 @@ export function Footer() {
         <div className="border-t border-white/5 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/25 text-xs text-center md:text-left">
-              © {new Date().getFullYear()} Rigveda Ads. All rights reserved. Developed by{" "}
-              <a
-                href="https://www.proshala.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-violet-400 hover:text-violet-300 transition-colors"
-              >
-                Proshala Tech
-              </a>
+              © {new Date().getFullYear()} Rigveda Ads Agency Pvt. Ltd. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
               {[
