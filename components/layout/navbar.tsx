@@ -2,206 +2,261 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Container } from "@/components/ui/container";
+import { useState, useEffect, useRef } from "react";
+import { Menu, X, Phone, Mail, ChevronDown, ArrowRight, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// ─── Constants ────────────────────────────────────────────────────────────────
+const PHONE      = "+917840000618";
+const PHONE_DISP = "+91 78400 00618";
+const EMAIL      = "info@rigvedaadds.com";
+
+// ─── Navigation Data ──────────────────────────────────────────────────────────
 const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { 
-    name: 'Services', 
-    href: '/services',
+  { name: "Home",         href: "/" },
+  { name: "About",        href: "/about" },
+  {
+    name: "Services",
+    href: "/services",
     hasDropdown: true,
     dropdownItems: [
       {
-        category: "Registration Services",
+        category: "Paid Advertising",
         items: [
-          { name: "One Person Company (OPC)", href: "/services/opc-registration" },
-          { name: "Private Limited Company", href: "/services/private-limited-company" },
-          { name: "Public Limited Company", href: "/services/public-limited-company" },
-          { name: "Section 8 Company (NGO)", href: "/services/section-8-company" },
-          { name: "Subsidiary of Foreign Company", href: "/services/subsidiary-company" },
-          { name: "LLP Registration", href: "/services/llp-registration" }
-        ]
+          { name: "Google Search Ads",       href: "/services/google-search-ads" },
+          { name: "Google Display Ads",      href: "/services/google-display-ads" },
+          { name: "YouTube Advertising",     href: "/services/youtube-ads" },
+          { name: "Google Shopping Ads",     href: "/services/shopping-ads" },
+          { name: "Facebook & Instagram Ads",href: "/services/social-media-ads" },
+          { name: "LinkedIn Advertising",    href: "/services/linkedin-ads" },
+        ],
       },
       {
-        category: "Strike Off Services",
+        category: "Organic Growth",
         items: [
-          { name: "Strike Off of Company", href: "/services/company-strike-off" },
-          { name: "Strike Off of LLP", href: "/services/llp-strike-off" }
-        ]
+          { name: "Search Engine Optimisation", href: "/services/seo" },
+          { name: "Local SEO",                  href: "/services/local-seo" },
+          { name: "Technical SEO Audit",        href: "/services/technical-seo" },
+          { name: "Content Marketing",          href: "/services/content-marketing" },
+        ],
       },
       {
-        category: "NCLT Matters",
+        category: "Strategy & Analytics",
         items: [
-          { name: "Merger and Amalgamation", href: "/services/merger-amalgamation" },
-          { name: "De-merger", href: "/services/demerger" },
-          { name: "Revival of Strike Off Company", href: "/services/company-revival" },
-          { name: "Compounding of Offence", href: "/services/compounding-offence" }
-        ]
+          { name: "Brand Bidding Campaigns",      href: "/services/brand-bidding" },
+          { name: "Performance Marketing",        href: "/services/performance-marketing" },
+          { name: "Conversion Rate Optimisation", href: "/services/cro" },
+          { name: "Analytics & Reporting",        href: "/services/analytics" },
+        ],
       },
       {
-        category: "Conversion Services",
+        category: "International & Dev",
         items: [
-          { name: "LLP to Company Conversion", href: "/services/llp-to-company" },
-          { name: "Private to Public Company", href: "/services/private-to-public" },
-          { name: "Public to Private Company", href: "/services/public-to-private" },
-          { name: "Company to LLP Conversion", href: "/services/company-to-llp" },
-          { name: "Unregistered to Company", href: "/services/unregistered-to-company" }
-        ]
+          { name: "International Campaigns", href: "/services/international-campaigns" },
+          { name: "US / UK Market Entry",    href: "/services/us-uk-campaigns" },
+          { name: "Website Development",     href: "/services/website-development" },
+          { name: "Landing Page Design",     href: "/services/landing-pages" },
+        ],
       },
-      {
-        category: "Compliance & Others",
-        items: [
-          { name: "Regional Director Approvals", href: "/services/rd-approvals" },
-          { name: "Secretarial Audit", href: "/services/secretarial-audit" },
-          { name: "Trademark Registration", href: "/services/trademark" },
-          { name: "Annual Compliance", href: "/services/annual-compliance" },
-          { name: "Dormant Company Services", href: "/services/dormant-company" }
-        ]
-      }
-    ]
+    ],
   },
-  { name: 'Blogs', href: '/blogs' },
-  { name: 'Career', href: '/career' },
-  { name: 'Contact', href: '/contact' },
+  { name: "Case Studies", href: "/case-studies" },
+  { name: "Blog",         href: "/blogs" },
+  { name: "Contact",      href: "/contact" },
 ];
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isOpen, setIsOpen]                   = useState(false);
+  const [isScrolled, setIsScrolled]           = useState(false);
+  const [activeDropdown, setActiveDropdown]   = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded]   = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const leaveTimer  = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setIsScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node))
+        setActiveDropdown(null);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isOpen]);
+
   const handleMouseEnter = (name: string) => {
+    if (leaveTimer.current) clearTimeout(leaveTimer.current);
     setActiveDropdown(name);
   };
 
   const handleMouseLeave = () => {
-    setActiveDropdown(null);
+    leaveTimer.current = setTimeout(() => setActiveDropdown(null), 150);
   };
 
-  const handleLinkClick = () => {
+  const closeAll = () => {
     setActiveDropdown(null);
     setIsOpen(false);
+    setMobileExpanded(null);
   };
 
   return (
     <>
-      {/* Top bar */}
-      <div className="bg-[#1E3A8A] text-white py-2 text-sm border-b border-blue-700">
-        <Container>
+      {/* ── Top bar ──────────────────────────────────────────────────── */}
+      {/* Reduced py-2 → py-1.5, tighter gap, higher contrast text */}
+      <div className="bg-[#08080C] border-b border-white/[0.06] py-1.5 hidden md:block">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center hover:text-blue-200 transition-colors">
-                <Phone className="h-4 w-4 mr-2" />
-                <span>+91 8800343499</span>
-              </div>
-              <div className="flex items-center hover:text-blue-200 transition-colors">
-                <Mail className="h-4 w-4 mr-2" />
-                <span>contact@cspkindia.com</span>
-              </div>
+
+            {/* Left: contact details */}
+            <div className="flex items-center gap-5">
+              <a
+                href={`tel:${PHONE}`}
+                className="flex items-center gap-1.5 text-white/60 hover:text-violet-400 transition-colors duration-200 text-[11px] font-medium"
+              >
+                <Phone className="w-3 h-3 flex-shrink-0" />
+                {PHONE_DISP}
+              </a>
+              <span className="w-px h-3 bg-white/10" />
+              <a
+                href={`mailto:${EMAIL}`}
+                className="flex items-center gap-1.5 text-white/60 hover:text-violet-400 transition-colors duration-200 text-[11px] font-medium"
+              >
+                <Mail className="w-3 h-3 flex-shrink-0" />
+                {EMAIL}
+              </a>
             </div>
-            <div className="hidden md:block">
-              <span className="text-blue-200">Serving the Corporates Since 2018</span>
+
+            {/* Right: tagline */}
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse flex-shrink-0" />
+              <span className="text-white/45 text-[11px] font-medium tracking-wide">
+                Google Certified Partner · 8+ Years of Performance Marketing
+              </span>
             </div>
           </div>
-        </Container>
+        </div>
       </div>
 
-      {/* Main navbar */}
-      <nav className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
-        isScrolled ? "bg-white backdrop-blur-md shadow-lg border-b" : "bg-white border-b border-gray-100"
-      )}>
-        <Container>
-          <div className="flex justify-between items-center py-4">
+      {/* ── Main Navbar ───────────────────────────────────────────────── */}
+      <nav
+        ref={dropdownRef}
+        className={cn(
+          "sticky top-0 z-50 transition-all duration-300",
+          isScrolled
+            ? "bg-[#0B0B0F]/85 backdrop-blur-xl border-b border-white/[0.07] shadow-xl shadow-black/40"
+            : "bg-[#0B0B0F] border-b border-white/[0.06]"
+        )}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Reduced h-16 → h-14 */}
+          <div className="flex items-center justify-between h-14">
+
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="relative w-full h-12">
-                <Image
-                  src="/LOGO.png"
-                  alt="CS Praveen Kumar Logo"
-                  width={100}
-                  height={100}
-                  className="rounded-lg h-16 w-full"
-                  priority
-                />
-              </div>
+            <Link href="/" onClick={closeAll} className="flex-shrink-0 relative w-32 h-9">
+              <Image
+                src="/LOGO.png"
+                alt="Rigveda Ads"
+                fill
+                className="object-contain object-left"
+                priority
+              />
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-8">
+            {/* Desktop Nav links */}
+            <div className="hidden lg:flex items-center gap-0.5">
               {navigation.map((item) => (
-                <div 
-                  key={item.name} 
-                  className="relative group"
+                <div
+                  key={item.name}
+                  className="relative"
                   onMouseEnter={() => item.hasDropdown && handleMouseEnter(item.name)}
                   onMouseLeave={() => item.hasDropdown && handleMouseLeave()}
                 >
                   <Link
                     href={item.href}
-                    className="flex items-center text-gray-700 hover:text-[#3AA6FF] transition-colors font-medium py-2"
-                    onClick={() => !item.hasDropdown && handleLinkClick()}
+                    onClick={() => !item.hasDropdown && closeAll()}
+                    className={cn(
+                      "inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-[13px] font-medium transition-all duration-200",
+                      activeDropdown === item.name
+                        ? "text-white bg-white/8"
+                        : "text-white/70 hover:text-white hover:bg-white/5"
+                                   // ↑ was /55 — now /70 for better contrast
+                    )}
                   >
                     {item.name}
                     {item.hasDropdown && (
-                      <ChevronDown className={cn(
-                        "h-4 w-4 ml-1 transition-transform duration-200",
-                        activeDropdown === item.name ? "rotate-180" : ""
-                      )} />
+                      <ChevronDown
+                        className={cn(
+                          "w-3.5 h-3.5 transition-transform duration-200",
+                          activeDropdown === item.name ? "rotate-180 text-violet-400" : "text-white/40"
+                        )}
+                      />
                     )}
                   </Link>
 
-                  {/* Responsive Dropdown Menu */}
-                  {item.hasDropdown && activeDropdown === item.name && (
-                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 w-screen max-w-4xl bg-white rounded-lg shadow-xl border border-gray-200 z-50">
-                      <div className="p-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                          {item.dropdownItems?.map((category, index) => (
-                            <div key={index} className="space-y-3">
-                              <h3 className="text-sm font-semibold text-[#3AA6FF] uppercase tracking-wide border-b border-gray-100 pb-2">
-                                {category.category}
-                              </h3>
-                              <ul className="space-y-2">
-                                {category.items.map((subItem, subIndex) => (
-                                  <li key={subIndex}>
-                                    <Link
-                                      href={subItem.href}
-                                      className="block text-sm text-gray-600 hover:text-[#3AA6FF] hover:bg-blue-50 rounded px-3 py-2 transition-all cursor-pointer"
-                                      onClick={handleLinkClick}
-                                    >
-                                      {subItem.name}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                        
-                        {/* CTA in Dropdown */}
-                        <div className="mt-6 pt-4 border-t border-gray-100">
-                          <div className="bg-gradient-to-r from-[#3AA6FF] to-[#2690E6] rounded-lg p-4 text-white text-center">
-                            <p className="text-sm mb-2">Need Professional Guidance?</p>
-                            <Button size="sm" variant="secondary" asChild className="bg-white text-[#3AA6FF] hover:bg-gray-100">
-                              <Link href="/contact" onClick={handleLinkClick}>
-                                Contact Us
-                              </Link>
-                            </Button>
+                  {/* Mega Dropdown */}
+                  {item.hasDropdown && (
+                    <div
+                      className={cn(
+                        "absolute top-[calc(100%+6px)] left-1/2 -translate-x-1/2 w-[840px] bg-[#0F0F15]/98 backdrop-blur-2xl border border-white/[0.09] rounded-2xl shadow-2xl shadow-black/80 overflow-hidden transition-all duration-200 origin-top",
+                        activeDropdown === item.name
+                          ? "opacity-100 scale-100 pointer-events-auto"
+                          : "opacity-0 scale-[0.97] pointer-events-none"
+                      )}
+                    >
+                      {/* Top glow */}
+                      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-violet-500/60 to-transparent" />
+
+                      <div className="p-5 grid grid-cols-4 gap-5">
+                        {item.dropdownItems?.map((cat, ci) => (
+                          <div key={ci}>
+                            <p className="text-[10px] font-bold text-violet-400 uppercase tracking-widest mb-2.5 pb-2 border-b border-white/[0.07]">
+                              {cat.category}
+                            </p>
+                            <ul className="space-y-0.5">
+                              {cat.items.map((sub, si) => (
+                                <li key={si}>
+                                  <Link
+                                    href={sub.href}
+                                    onClick={closeAll}
+                                    className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-[13px] text-white/65 hover:text-white hover:bg-white/5 transition-all duration-150 group"
+                                    // ↑ was /50 → now /65
+                                  >
+                                    <span className="w-1 h-1 bg-violet-500/40 rounded-full group-hover:bg-violet-400 transition-colors flex-shrink-0" />
+                                    {sub.name}
+                                  </Link>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
+                        ))}
+                      </div>
+
+                      {/* CTA strip */}
+                      <div className="border-t border-white/[0.06] bg-violet-500/[0.06] px-5 py-3.5 flex items-center justify-between gap-4">
+                        <div>
+                          <p className="text-[13px] font-semibold text-white">
+                            Not sure which service you need?
+                          </p>
+                          <p className="text-[11px] text-white/50 mt-0.5">
+                            Free audit — we will recommend the right strategy for your business.
+                          </p>
                         </div>
+                        <Link
+                          href="/contact"
+                          onClick={closeAll}
+                          className="inline-flex items-center gap-1.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white text-[13px] font-bold px-4 py-2 rounded-xl hover:opacity-90 transition-all flex-shrink-0 shadow-lg shadow-violet-500/20"
+                        >
+                          Free Audit <ArrowRight className="w-3.5 h-3.5" />
+                        </Link>
                       </div>
                     </div>
                   )}
@@ -209,79 +264,178 @@ export function Navbar() {
               ))}
             </div>
 
-            {/* CTA Button & Mobile menu button */}
-            <div className="flex items-center space-x-4">
-              <Button 
-                asChild 
-                className="hidden lg:inline-flex bg-[#3AA6FF] hover:bg-[#2690E6] text-white shadow-md"
+            {/* Desktop CTA buttons */}
+            <div className="hidden lg:flex items-center gap-2.5">
+              <a
+                href={`tel:${PHONE}`}
+                className="inline-flex items-center gap-1.5 text-white/65 hover:text-white text-[13px] font-medium transition-colors duration-200 px-2 py-1.5 rounded-lg hover:bg-white/5"
+                // ↑ was /40 → now /65
               >
-                <Link href="/contact">Contact Us</Link>
-              </Button>
-              
-              {/* Mobile menu button */}
-              <Button
-                variant="ghost"
-                size="sm"
-                className="lg:hidden"
-                onClick={() => setIsOpen(!isOpen)}
+                <Phone className="w-3.5 h-3.5 text-violet-400" />
+                {PHONE_DISP}
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-1.5 bg-gradient-to-r from-violet-600 to-purple-600 text-white text-[13px] font-bold px-4 py-2 rounded-xl hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-md shadow-violet-500/25"
               >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </Button>
+                <Zap className="w-3.5 h-3.5" /> Free Audit
+              </Link>
             </div>
+
+            {/* Mobile hamburger */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg border border-white/[0.12] text-white/70 hover:text-white hover:border-white/25 transition-all"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+            >
+              {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* ── Mobile Drawer ─────────────────────────────────────────────── */}
+      <div
+        className={cn(
+          "fixed inset-0 z-40 lg:hidden transition-all duration-300",
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        )}
+      >
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+          onClick={closeAll}
+        />
+
+        {/* Drawer panel */}
+        <div
+          className={cn(
+            "absolute top-0 right-0 h-full w-[300px] max-w-[90vw] bg-[#0F0F15] border-l border-white/[0.08] flex flex-col transition-transform duration-300 ease-out",
+            isOpen ? "translate-x-0" : "translate-x-full"
+          )}
+        >
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 py-3.5 border-b border-white/[0.07]">
+            <div className="relative w-28 h-8">
+              <Image
+                src="/LOGO.png"
+                alt="Rigveda Ads"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
+            <button
+              onClick={closeAll}
+              className="w-7 h-7 flex items-center justify-center rounded-lg border border-white/[0.1] text-white/60 hover:text-white transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
 
-          {/* Mobile Navigation */}
-          {isOpen && (
-            <div className="lg:hidden pb-4 border-t bg-white">
-              <div className="pt-4 space-y-2 max-h-96 overflow-y-auto">
-                {navigation.map((item) => (
-                  <div key={item.name}>
-                    <Link
-                      href={item.href}
-                      className="flex items-center justify-between px-4 py-3 text-gray-700 hover:text-[#3AA6FF] hover:bg-gray-50 rounded-md transition-colors font-medium"
-                      onClick={() => !item.hasDropdown && setIsOpen(false)}
+          {/* Contact strip — mobile */}
+          <div className="px-4 py-2.5 bg-white/[0.03] border-b border-white/[0.05] flex items-center gap-4">
+            <a
+              href={`tel:${PHONE}`}
+              className="flex items-center gap-1.5 text-white/65 hover:text-violet-400 transition-colors text-[11px] font-medium"
+            >
+              <Phone className="w-3 h-3 text-violet-400" />
+              {PHONE_DISP}
+            </a>
+            <a
+              href={`mailto:${EMAIL}`}
+              className="flex items-center gap-1.5 text-white/65 hover:text-violet-400 transition-colors text-[11px] font-medium truncate"
+            >
+              <Mail className="w-3 h-3 text-violet-400 flex-shrink-0" />
+              {EMAIL}
+            </a>
+          </div>
+
+          {/* Nav items */}
+          <div className="flex-1 overflow-y-auto py-2 px-2">
+            {navigation.map((item) => (
+              <div key={item.name}>
+                {item.hasDropdown ? (
+                  <>
+                    <button
+                      onClick={() =>
+                        setMobileExpanded(mobileExpanded === item.name ? null : item.name)
+                      }
+                      className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/5 transition-all text-sm font-medium"
+                      // ↑ was /60 → now /75
                     >
                       {item.name}
-                      {item.hasDropdown && <ChevronDown className="h-4 w-4" />}
-                    </Link>
-                    
-                    {/* Mobile Dropdown */}
-                    {item.hasDropdown && (
-                      <div className="pl-4 space-y-1 border-l-2 border-gray-100 ml-4">
-                        {item.dropdownItems?.map((category, index) => (
-                          <div key={index} className="py-2">
-                            <p className="text-xs font-semibold text-[#3AA6FF] uppercase tracking-wide mb-2">
-                              {category.category}
+                      <ChevronDown
+                        className={cn(
+                          "w-4 h-4 transition-transform duration-200",
+                          mobileExpanded === item.name ? "rotate-180 text-violet-400" : "text-white/35"
+                        )}
+                      />
+                    </button>
+
+                    <div
+                      className={cn(
+                        "overflow-hidden transition-all duration-300",
+                        mobileExpanded === item.name
+                          ? "max-h-[600px] opacity-100"
+                          : "max-h-0 opacity-0"
+                      )}
+                    >
+                      <div className="ml-2 pl-3 border-l border-violet-500/25 py-1.5 space-y-3 mb-1">
+                        {item.dropdownItems?.map((cat, ci) => (
+                          <div key={ci}>
+                            <p className="text-[9px] font-bold text-violet-400 uppercase tracking-widest mb-1.5 px-2">
+                              {cat.category}
                             </p>
-                            {category.items.map((subItem, subIndex) => (
+                            {cat.items.map((sub, si) => (
                               <Link
-                                key={subIndex}
-                                href={subItem.href}
-                                className="block px-3 py-2 text-sm text-gray-600 hover:text-[#3AA6FF] hover:bg-gray-50 rounded transition-colors cursor-pointer"
-                                onClick={() => setIsOpen(false)}
+                                key={si}
+                                href={sub.href}
+                                onClick={closeAll}
+                                className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-[12px] text-white/60 hover:text-white hover:bg-white/5 transition-all"
+                                // ↑ was /45 → now /60
                               >
-                                {subItem.name}
+                                <span className="w-1 h-1 bg-violet-500/50 rounded-full flex-shrink-0" />
+                                {sub.name}
                               </Link>
                             ))}
                           </div>
                         ))}
                       </div>
-                    )}
-                  </div>
-                ))}
-                <div className="px-4 pt-4 border-t border-gray-100">
-                  <Button 
-                    asChild 
-                    className="w-full bg-[#3AA6FF] hover:bg-[#2690E6] text-white"
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={closeAll}
+                    className="flex items-center px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/5 transition-all text-sm font-medium"
+                    // ↑ was /60 → now /75
                   >
-                    <Link href="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link>
-                  </Button>
-                </div>
+                    {item.name}
+                  </Link>
+                )}
               </div>
-            </div>
-          )}
-        </Container>
-      </nav>
+            ))}
+          </div>
+
+          {/* Footer CTAs */}
+          <div className="p-3 border-t border-white/[0.07] space-y-2">
+            <Link
+              href="/contact"
+              onClick={closeAll}
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-bold py-3 rounded-xl text-sm hover:opacity-90 transition-all w-full shadow-lg shadow-violet-500/20"
+            >
+              <Zap className="w-4 h-4" /> Get Free Audit
+            </Link>
+            <a
+              href={`tel:${PHONE}`}
+              className="flex items-center justify-center gap-2 border border-white/[0.12] text-white/75 hover:text-white hover:border-white/20 py-2.5 rounded-xl text-sm font-medium transition-all w-full"
+              // ↑ was /55 → now /75
+            >
+              <Phone className="w-4 h-4 text-violet-400" /> {PHONE_DISP}
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

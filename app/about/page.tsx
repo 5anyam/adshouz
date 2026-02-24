@@ -1,357 +1,535 @@
 import { Metadata } from "next";
-import { Download, Award, Users, Clock, Trophy, Building2, Scale, FileText } from "lucide-react";
-import { PageHeader } from "@/components/ui/page-header";
-import { Section } from "@/components/ui/section";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import {
+  Users, Clock, Trophy, Award, Target, Zap,
+  Globe, BarChart3, TrendingUp, Shield, Heart,
+  Lightbulb, ArrowRight, CheckCircle2, Star
+} from "lucide-react";
 import Link from "next/link";
 
-
+// ─── Metadata ─────────────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  title: 'About CS Praveen Kumar - Leading Company Secretary Firm | Praveen K & Associates',
-  description: 'Learn about Praveen K & Associates, a leading Company Secretary firm founded in 2018 by CS Praveen Kumar, providing comprehensive CS and compliance services across India.',
-  keywords: 'about CS Praveen Kumar, Praveen K Associates, company secretary firm, CS services, compliance experts, corporate governance',
+  title: "About Rigveda Ads — Google Ads & Performance Marketing Agency India",
+  description:
+    "Learn about Rigveda Ads, a certified Google Ads and performance marketing agency with 8+ years of experience delivering data-driven campaigns with proven ROI across India and internationally.",
+  keywords: [
+    "about Rigveda Ads",
+    "Google Ads agency India",
+    "performance marketing company",
+    "PPC agency Delhi",
+    "digital marketing agency India",
+    "certified Google partner",
+  ],
 };
 
-
+// ─── Data ─────────────────────────────────────────────────────────────────────
 const stats = [
-  { icon: Users, number: "500+", label: "Happy Clients" },
-  { icon: Trophy, number: "7+", label: "Years Experience" },
-  { icon: Award, number: "100%", label: "Success Rate" },
-  { icon: Clock, number: "24/7", label: "Support" }
+  { icon: Users,    number: "126+",  label: "Happy Clients" },
+  { icon: Trophy,   number: "8+",    label: "Years Experience" },
+  { icon: BarChart3,number: "500+",  label: "Campaigns Managed" },
+  { icon: TrendingUp,number: "300%", label: "Average Client ROI" },
 ];
-
 
 const timeline = [
   {
+    year: "2016",
+    title: "Agency Founded",
+    description:
+      "Rigveda Ads was founded with a clear mission — to bring honest, data-driven Google Ads management to Indian businesses tired of agencies with zero accountability.",
+  },
+  {
     year: "2018",
-    title: "Company Founded",
-    description: "Praveen K & Associates was founded by Mr. Praveen Kumar with a vision to provide quality CS services to growing businesses"
+    title: "Google Certification",
+    description:
+      "Achieved Google Partner certification. Expanded service offering to include Facebook Ads, SEO and brand bidding campaign management.",
   },
   {
     year: "2020",
-    title: "Team Expansion", 
-    description: "Expanded team with qualified CS professionals, Chartered Accountants, and Advocates for comprehensive services"
+    title: "Performance Marketing Focus",
+    description:
+      "Pivoted to full-funnel performance marketing — combining PPC, landing page CRO and analytics to deliver measurable end-to-end ROI for clients.",
   },
   {
     year: "2022",
-    title: "Digital Transformation",
-    description: "Adopted digital processes for faster and more efficient service delivery across India"
+    title: "International Expansion",
+    description:
+      "Launched international campaign management for clients targeting US, UK, UAE, Canada and Singapore markets. 50+ global campaigns delivered.",
   },
   {
     year: "2025",
-    title: "Established Leader",
-    description: "Recognized as a leading CS firm serving clients across diverse industries with expertise in corporate governance"
-  }
+    title: "300%+ Average ROI",
+    description:
+      "Crossed 500 campaigns managed and 126+ active clients across all major sectors. Recognised as a leading performance marketing agency in North India.",
+  },
 ];
-
 
 const values = [
   {
-    title: "Excellence",
-    description: "We strive for excellence in every service we provide, ensuring 100% accuracy and compliance with all regulatory requirements."
+    icon: Target,
+    title: "Results First",
+    description:
+      "Every decision we make is tied to your business outcomes. We optimise for conversions, leads and revenue — not vanity metrics.",
   },
   {
-    title: "Integrity", 
-    description: "We maintain the highest standards of integrity and transparency in all our business dealings and client relationships."
+    icon: Shield,
+    title: "Full Transparency",
+    description:
+      "Weekly reports, live dashboards, zero hidden fees. You always know exactly where every rupee of your ad budget is going.",
   },
   {
-    title: "Innovation",
-    description: "We continuously innovate our processes to provide efficient and modern solutions for complex corporate challenges."
+    icon: Lightbulb,
+    title: "Continuous Innovation",
+    description:
+      "Digital advertising evolves daily. We stay ahead of algorithm changes, beta features and new ad formats so you always have the edge.",
   },
   {
-    title: "Trust",
-    description: "Building longstanding relationships with our clients through reliable, ethical, and efficient professional services."
-  }
+    icon: Heart,
+    title: "Long-term Partnership",
+    description:
+      "We don't chase quick wins. We build sustainable ad systems that grow your business month over month, year over year.",
+  },
 ];
-
 
 const serviceAreas = [
   {
-    icon: FileText,
-    title: "Secretarial Services",
-    description: "Comprehensive company secretarial services for all regulatory compliance needs"
+    icon: Target,
+    title: "Paid Advertising",
+    description:
+      "Google Search, Display, Shopping, YouTube, Facebook, Instagram and LinkedIn ads — managed end-to-end for maximum ROI.",
   },
   {
-    icon: Building2,
-    title: "Corporate Advisory",
-    description: "Strategic corporate advisory and management consultancy services"
+    icon: TrendingUp,
+    title: "Performance Marketing",
+    description:
+      "Full-funnel CPA/CPS/CPL campaigns with aggressive A/B testing, bid optimisation and conversion tracking at every stage.",
   },
   {
-    icon: Scale,
-    title: "Legal Compliance",
-    description: "Expert guidance in Direct & Indirect Tax Laws, IPR, and regulatory matters"
-  }
+    icon: Globe,
+    title: "International Campaigns",
+    description:
+      "Geo-targeted, localised campaigns for US, UK, UAE, Canada and Singapore markets with proven cross-border strategies.",
+  },
 ];
 
+const expertise = [
+  "Google Search & Display Network",
+  "YouTube Video Advertising",
+  "Facebook & Instagram Ads",
+  "Brand Protection & Competitor Bidding",
+  "Conversion Rate Optimisation (CRO)",
+  "Search Engine Optimisation (SEO)",
+  "Analytics, Tracking & Reporting",
+  "International Market Campaigns",
+  "Landing Page Design & Development",
+  "E-commerce Performance Marketing",
+];
 
 const industries = [
-  "Manufacturing", "Construction", "Insurance", "Banking", "Power", "Textiles",
-  "Retail", "Commodities", "Healthcare", "Hospitality", "Media", "Information Technology"
+  "E-commerce",       "Healthcare",     "Real Estate",    "Education",
+  "Finance & NBFC",   "SaaS & Tech",    "Hospitality",    "Legal Services",
+  "Manufacturing",    "Retail & D2C",   "Startups",       "NGOs & Trusts",
 ];
 
+// ─── Reusable Label ───────────────────────────────────────────────────────────
+const Label = ({ text }: { text: string }) => (
+  <div className="inline-flex items-center gap-2 mb-4">
+    <span className="w-4 h-4 rounded-full border-2 border-violet-500 flex items-center justify-center">
+      <span className="w-1.5 h-1.5 bg-violet-500 rounded-full" />
+    </span>
+    <span className="text-violet-400 font-semibold text-sm">{text}</span>
+  </div>
+);
 
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function AboutPage() {
   return (
-    <>
-      <PageHeader
-        title="About Praveen K & Associates"
-        description="Leading Company Secretary firm providing comprehensive professional services since 2018"
-        breadcrumb={[
-          { label: "Home", href: "/" },
-          { label: "About" }
-        ]}
-      />
+    <div className="bg-[#0B0B0F] text-white overflow-x-hidden">
 
+      {/* ════════════ PAGE HERO */}
+      <section className="relative pt-28 pb-20 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute -top-20 right-0 w-[600px] h-[600px] bg-violet-700/20 rounded-full blur-[120px]" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[300px] bg-purple-800/10 rounded-full blur-[80px]" />
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{ backgroundImage: "radial-gradient(circle, #8B5CF6 1px, transparent 1px)", backgroundSize: "44px 44px" }}
+          />
+        </div>
 
-      {/* Company Overview */}
-      <Section>
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Leading CS Firm Since 2018
-            </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6 text-justify">
-              Praveen K & Associates is a leading Company Secretary firm founded in 2018 by CS Praveen Kumar. 
-              It provides comprehensive professional services which include Secretarial Services, Corporate Advisory, 
-              Management Consultancy, Financial Management etc. to a large and wide variety of clients throughout India.
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-xs text-white/30 mb-8">
+            <Link href="/" className="hover:text-violet-400 transition-colors">Home</Link>
+            <span>/</span>
+            <span className="text-white/60">About Us</span>
+          </nav>
+
+          <div className="max-w-3xl">
+            <Label text="Our Story" />
+            <h1 className="text-5xl lg:text-7xl font-black leading-[1.03] mb-6 tracking-tight">
+              <span className="text-white">About </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-purple-300 to-pink-300">
+                Rigveda Ads
+              </span>
+            </h1>
+            <p className="text-xl text-white/50 leading-relaxed max-w-2xl">
+              A certified Google Ads &amp; performance marketing agency delivering data-driven
+              campaigns with transparent reporting and proven ROI — for every type of business,
+              in every market.
             </p>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6 text-justify">
-              Our clients include listed and non-listed companies and cover a broad spectrum of industries ranging 
-              from manufacturing, construction, insurance, banking, power, textiles, retail, commodities, healthcare, 
-              hospitality, media and information technology.
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6 text-justify">
-              We are a team of young professionals, committed to provide quality professional services in a 
-              time-bound manner and build a longstanding relationship with our clients.
-            </p>
-            <p className="text-gray-600 text-lg leading-relaxed mb-8 text-justify">
-              We are an established firm of Practicing Company Secretaries providing various professional services 
-              to both public and private companies. We are acknowledged experts in all areas of company secretarial 
-              practice, Merger and Acquisitions, Intellectual Property Rights (IPR), Direct and Indirect Tax Laws. 
-              Our team consists of Company Secretaries and other Professional Associates such as Chartered Accountants, and Advocates.
-            </p>
-            <Button size="lg" asChild className="bg-[#3AA6FF] hover:bg-[#2690E6] text-white">
-              <Link href="/contact">
-                Rate Us
-              </Link>
-            </Button>
           </div>
-          
-          <div className="grid grid-cols-2 gap-6">
-            {stats.map((stat, index) => (
-              <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
-                <CardContent className="p-0">
-                  <div className="w-12 h-12 bg-gradient-to-r from-[#3AA6FF] to-[#2690E6] rounded-full flex items-center justify-center mx-auto mb-3">
-                    <stat.icon className="h-6 w-6 text-white" />
+        </div>
+      </section>
+
+      {/* ════════════ COMPANY OVERVIEW */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <Label text="Who We Are" />
+              <h2 className="text-3xl lg:text-5xl font-black leading-tight mb-8">
+                <span className="text-white">Performance Marketing </span>
+                <span className="text-white/20">Done Right</span>
+              </h2>
+
+              <div className="space-y-5 text-white/55 leading-relaxed">
+                <p>
+                  Rigveda Ads is a certified Google Ads and performance marketing agency founded
+                  with one goal — to help Indian businesses grow profitably through digital advertising.
+                  We combine deep platform expertise with data-driven strategy to deliver campaigns
+                  that produce real, measurable business results.
+                </p>
+                <p>
+                  Our clients range from early-stage startups to established enterprises across
+                  e-commerce, healthcare, real estate, SaaS, finance and more. Whether you need
+                  pan-India coverage or targeted international campaigns in US, UK or UAE, we have
+                  the experience to deliver.
+                </p>
+                <p>
+                  We are a team of young, certified professionals committed to transparency, continuous
+                  optimisation, and long-term client partnerships. No lock-in contracts, no vanity
+                  metrics — just results you can measure.
+                </p>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                {["Google Certified Partner", "8+ Years Experience", "500+ Campaigns", "Pan-India + Global"].map(b => (
+                  <div key={b} className="flex items-center gap-2 bg-white/5 border border-white/8 rounded-full px-4 py-2">
+                    <CheckCircle2 className="w-4 h-4 text-violet-400 flex-shrink-0" />
+                    <span className="text-white/70 text-sm font-medium">{b}</span>
                   </div>
-                  <div className="text-3xl font-bold text-gray-900 mb-1">{stat.number}</div>
-                  <div className="text-gray-600">{stat.label}</div>
-                </CardContent>
-              </Card>
+                ))}
+              </div>
+
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 mt-8 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-bold px-8 py-4 rounded-2xl hover:opacity-90 transition-all shadow-lg shadow-violet-500/25"
+              >
+                Work With Us <ArrowRight className="w-5 h-5" />
+              </Link>
+            </div>
+
+            {/* Stats grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {stats.map(({ icon: Icon, number, label }, i) => (
+                <div
+                  key={i}
+                  className="bg-[#13131A] border border-white/5 rounded-2xl p-7 hover:border-violet-500/30 hover:-translate-y-1 transition-all duration-300 group"
+                >
+                  <div className="w-11 h-11 bg-violet-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-violet-500/20 transition-colors">
+                    <Icon className="w-5 h-5 text-violet-400" />
+                  </div>
+                  <div className="text-4xl font-black text-white mb-1">{number}</div>
+                  <div className="text-white/40 text-sm">{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════ MISSION & VISION */}
+      <section className="py-20 bg-[#0F0F14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-6">
+            {/* Mission */}
+            <div className="relative bg-[#13131A] border border-white/5 rounded-2xl p-8 overflow-hidden group hover:border-violet-500/30 transition-all">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-violet-500 to-purple-600 rounded-l-2xl" />
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-violet-500/50 to-transparent" />
+              <div className="pl-4">
+                <p className="text-xs font-bold text-violet-400 uppercase tracking-widest mb-4">Our Mission</p>
+                <h3 className="text-2xl font-black text-white mb-4">Why We Exist</h3>
+                <p className="text-white/50 leading-relaxed">
+                  To deliver honest, transparent and results-focused digital advertising that empowers
+                  businesses to grow profitably. We exist to be the agency we wished existed when we
+                  started — no fluff, no jargon, just performance.
+                </p>
+              </div>
+            </div>
+
+            {/* Vision */}
+            <div className="relative bg-[#13131A] border border-white/5 rounded-2xl p-8 overflow-hidden group hover:border-violet-500/30 transition-all">
+              <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-purple-500 to-pink-500 rounded-l-2xl" />
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-purple-500/50 to-transparent" />
+              <div className="pl-4">
+                <p className="text-xs font-bold text-purple-400 uppercase tracking-widest mb-4">Our Vision</p>
+                <h3 className="text-2xl font-black text-white mb-4">Where We are Going</h3>
+                <p className="text-white/50 leading-relaxed">
+                  To be India most trusted performance marketing agency — recognised for delivering
+                  measurable growth, building long-term partnerships, and pioneering data-driven
+                  advertising strategies that set the benchmark for the industry.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════ SERVICE AREAS */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <Label text="What We Do" />
+            <h2 className="text-3xl lg:text-5xl font-black">
+              <span className="text-white">Our Core </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300">
+                Capabilities
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5 mb-14">
+            {serviceAreas.map(({ icon: Icon, title, description }, i) => (
+              <div
+                key={i}
+                className="bg-[#13131A] border border-white/5 rounded-2xl p-8 text-center hover:border-violet-500/30 hover:-translate-y-1.5 transition-all duration-300 group"
+              >
+                <div className="w-14 h-14 bg-gradient-to-br from-violet-600 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-110 transition-transform shadow-lg shadow-violet-500/20">
+                  <Icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-black text-white mb-3">{title}</h3>
+                <p className="text-white/45 text-sm leading-relaxed">{description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Expertise pills */}
+          <div className="bg-[#13131A] border border-white/5 rounded-2xl p-8">
+            <p className="text-xs font-bold text-violet-400 uppercase tracking-widest text-center mb-6">
+              Expertise Areas
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {expertise.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-2 bg-white/5 border border-white/8 hover:border-violet-500/30 hover:bg-violet-500/5 rounded-full px-4 py-2 transition-all cursor-default"
+                >
+                  <Zap className="w-3.5 h-3.5 text-violet-400 flex-shrink-0" />
+                  <span className="text-white/60 text-sm font-medium">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════════════ VALUES */}
+      <section className="py-24 bg-[#0F0F14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <Label text="Our Values" />
+            <h2 className="text-3xl lg:text-5xl font-black text-white">
+              What Drives Us
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {values.map(({ icon: Icon, title, description }, i) => (
+              <div
+                key={i}
+                className="bg-[#13131A] border border-white/5 rounded-2xl p-6 hover:border-violet-500/30 transition-all duration-300 group"
+              >
+                <div className="w-11 h-11 bg-violet-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-violet-500/20 transition-colors">
+                  <Icon className="w-5 h-5 text-violet-400" />
+                </div>
+                <h3 className="font-black text-white text-lg mb-2">{title}</h3>
+                <p className="text-white/45 text-sm leading-relaxed">{description}</p>
+              </div>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
+      {/* ════════════ INDUSTRIES */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <Label text="Industries" />
+            <h2 className="text-3xl lg:text-5xl font-black text-white mb-3">
+              Sectors We Serve
+            </h2>
+            <p className="text-white/40 max-w-lg mx-auto text-sm">
+              We have delivered profitable campaigns across every major industry in India and internationally.
+            </p>
+          </div>
 
-      {/* Mission & Vision */}
-      <Section className="bg-gray-50">
-        <div className="grid md:grid-cols-2 gap-12">
-          <Card className="p-8 border-l-4 border-[#3AA6FF]">
-            <CardContent className="p-0">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
-              <p className="text-gray-600 leading-relaxed text-justify">
-                Our mission is to deliver trusted, ethical, and efficient corporate governance and compliance 
-                solutions that empower businesses to operate with transparency, integrity, and legal confidence. 
-                We strive to be a reliable partner to our clients, ensuring seamless adherence to statutory 
-                requirements while fostering sustainable growth and stakeholder trust.
-              </p>
-            </CardContent>
-          </Card>
-          
-          <Card className="p-8 border-l-4 border-[#2690E6]">
-            <CardContent className="p-0">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
-              <p className="text-gray-600 leading-relaxed text-justify">
-                To be the most trusted and innovative corporate governance partner, recognized for excellence 
-                in compliance, strategic advisory, and ethical business practices — enabling organizations to 
-                thrive in a transparent, responsible, and sustainable corporate environment.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {industries.map((industry, i) => (
+              <div
+                key={i}
+                className="bg-[#13131A] border border-white/5 rounded-xl p-4 text-center hover:border-violet-500/30 hover:-translate-y-0.5 hover:bg-[#16161F] transition-all duration-300 cursor-default group"
+              >
+                <span className="w-2 h-2 bg-violet-500/50 rounded-full block mx-auto mb-2 group-hover:bg-violet-400 transition-colors" />
+                <span className="text-white/55 text-xs font-semibold group-hover:text-white/80 transition-colors">
+                  {industry}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
 
-
-      {/* Service Areas */}
-      <Section>
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Our Professional Services
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We are acknowledged experts in all areas of company secretarial practice, providing comprehensive solutions
-          </p>
+      {/* ════════════ TIMELINE */}
+      <section className="py-24 bg-[#0F0F14] relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-violet-800/8 rounded-full blur-[120px]" />
         </div>
-        
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {serviceAreas.map((service, index) => (
-            <Card key={index} className="text-center p-8 hover:shadow-lg transition-shadow">
-              <CardContent className="p-0">
-                <div className="w-16 h-16 bg-gradient-to-r from-[#3AA6FF] to-[#2690E6] rounded-full flex items-center justify-center mx-auto mb-6">
-                  <service.icon className="h-8 w-8 text-white" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <Label text="Our Journey" />
+            <h2 className="text-3xl lg:text-5xl font-black">
+              <span className="text-white">8 Years of </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300">
+                Growth
+              </span>
+            </h2>
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            {timeline.map((item, i) => (
+              <div key={i} className="flex gap-6 mb-8 last:mb-0 group">
+                {/* Year bubble + line */}
+                <div className="flex flex-col items-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl flex items-center justify-center shadow-lg shadow-violet-500/20 group-hover:scale-105 transition-transform">
+                    <span className="text-white font-black text-sm">{item.year}</span>
+                  </div>
+                  {i < timeline.length - 1 && (
+                    <div className="w-px flex-1 bg-gradient-to-b from-violet-500/30 to-transparent mt-3 min-h-[32px]" />
+                  )}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
-              </CardContent>
-            </Card>
-          ))}
+
+                {/* Content */}
+                <div className="bg-[#13131A] border border-white/5 rounded-2xl p-6 flex-1 hover:border-violet-500/20 transition-all mb-2">
+                  <h3 className="text-lg font-black text-white mb-2">{item.title}</h3>
+                  <p className="text-white/45 text-sm leading-relaxed">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
+      {/* ════════════ LEADERSHIP */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <Label text="Leadership" />
+            <h2 className="text-3xl lg:text-5xl font-black text-white">The People Behind It</h2>
+          </div>
 
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-8">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">Our Expertise Areas</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            <div className="bg-white px-4 py-2 rounded-full shadow-sm">
-              <span className="text-sm font-medium text-gray-700">Merger & Acquisitions</span>
+          <div className="max-w-2xl mx-auto">
+            <div className="relative bg-[#13131A] border border-white/5 rounded-3xl p-10 text-center overflow-hidden">
+              {/* Glow */}
+              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
+              <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-60 h-60 bg-violet-600/10 rounded-full blur-3xl pointer-events-none" />
+
+              <div className="relative z-10">
+                <div className="w-24 h-24 bg-gradient-to-br from-violet-600 to-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-violet-500/25">
+                  <span className="text-white font-black text-2xl">RA</span>
+                </div>
+
+                <h3 className="text-2xl font-black text-white mb-1">Founder, Rigveda Ads</h3>
+                <p className="text-violet-400 font-semibold text-sm mb-6">
+                  Google Certified Ads Expert · Performance Marketing Strategist
+                </p>
+
+                <p className="text-white/50 leading-relaxed text-sm mb-6 max-w-lg mx-auto">
+                  With over 8 years of hands-on experience in Google Ads, performance marketing
+                  and international campaign management, the founder of Rigveda Ads has led
+                  500+ campaigns across diverse industries — delivering transparent, ROI-focused
+                  digital advertising for clients across India and globally.
+                </p>
+
+                <div className="flex flex-wrap justify-center gap-3">
+                  {["Google Ads Certified", "Meta Blueprint", "Analytics Expert", "CRO Specialist"].map(b => (
+                    <div key={b} className="flex items-center gap-1.5 bg-violet-500/10 border border-violet-500/20 rounded-full px-3 py-1.5">
+                      <Star className="w-3 h-3 text-violet-400 fill-violet-400" />
+                      <span className="text-violet-300 text-xs font-semibold">{b}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-            <div className="bg-white px-4 py-2 rounded-full shadow-sm">
-              <span className="text-sm font-medium text-gray-700">Intellectual Property Rights (IPR)</span>
-            </div>
-            <div className="bg-white px-4 py-2 rounded-full shadow-sm">
-              <span className="text-sm font-medium text-gray-700">Direct & Indirect Tax Laws</span>
-            </div>
-            <div className="bg-white px-4 py-2 rounded-full shadow-sm">
-              <span className="text-sm font-medium text-gray-700">Corporate Governance</span>
-            </div>
-            <div className="bg-white px-4 py-2 rounded-full shadow-sm">
-              <span className="text-sm font-medium text-gray-700">Management Consultancy</span>
+          </div>
+
+          {/* Why Work With Us card */}
+          <div className="mt-8 max-w-2xl mx-auto">
+            <div className="bg-gradient-to-r from-violet-600/10 to-purple-600/10 border border-violet-500/15 rounded-2xl p-8 text-center">
+              <h3 className="text-xl font-black text-white mb-3">Why Work With Rigveda Ads?</h3>
+              <p className="text-white/45 text-sm leading-relaxed max-w-xl mx-auto">
+                We treat your ad budget like our own. Every campaign gets daily monitoring,
+                aggressive optimisation and a weekly report — so you always know your numbers.
+                No lock-in, no fluff, just performance.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 mt-6 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-bold px-8 py-3.5 rounded-xl hover:opacity-90 transition-all shadow-lg shadow-violet-500/25 text-sm"
+              >
+                Start with a Free Audit <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>
-      </Section>
+      </section>
 
-
-      {/* Company Values */}
-      <Section className="bg-gray-50">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Our Core Values
+      {/* ════════════ BOTTOM CTA */}
+      <section className="py-20 relative overflow-hidden bg-[#0F0F14]">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-r from-violet-900/20 to-purple-900/15" />
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-violet-500/40 to-transparent" />
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{ backgroundImage: "radial-gradient(circle, #8B5CF6 1px, transparent 1px)", backgroundSize: "44px 44px" }}
+          />
+        </div>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-4xl lg:text-5xl font-black mb-4">
+            Ready to{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300">
+              Scale Your Ads?
+            </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            These values guide everything we do and define how we serve our clients with integrity and professionalism
+          <p className="text-white/45 text-lg mb-8 max-w-xl mx-auto">
+            Get a free, no-obligation Google Ads audit. We will show you exactly what is
+            working, what is not, and how to fix it.
           </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-black px-10 py-5 rounded-2xl hover:opacity-90 hover:-translate-y-0.5 transition-all shadow-2xl shadow-violet-500/30 text-lg"
+            >
+              Get Free Audit <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center justify-center gap-2 border border-white/12 text-white font-bold px-10 py-5 rounded-2xl hover:bg-white/5 transition-all text-lg"
+            >
+              Explore Services
+            </Link>
+          </div>
         </div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {values.map((value, index) => (
-            <div key={index} className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-[#3AA6FF] to-[#2690E6] rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">{value.title.charAt(0)}</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{value.description}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
+      </section>
 
-
-      {/* Industries We Serve */}
-      <Section>
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Industries We Serve
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto text-justify">
-            We serve clients across diverse industries, from unlisted to listed companies
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {industries.map((industry, index) => (
-            <div key={index} className="bg-white p-4 rounded-lg shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
-              <div className="w-3 h-3 bg-[#3AA6FF] rounded-full mx-auto mb-2"></div>
-              <span className="text-sm font-medium text-gray-700">{industry}</span>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-
-      {/* Company Timeline */}
-      <Section className="bg-gray-50">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Our Journey
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Seven years of growth, innovation, and client success since 2018
-          </p>
-        </div>
-        
-        <div className="max-w-4xl mx-auto">
-          {timeline.map((item, index) => (
-            <div key={index} className="flex items-center mb-8 last:mb-0">
-              <div className="flex-shrink-0 w-20 h-20 bg-gradient-to-r from-[#3AA6FF] to-[#2690E6] rounded-full flex items-center justify-center text-white font-bold text-lg mr-8">
-                {item.year}
-              </div>
-              <div className="flex-1">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-
-      {/* Leadership Section */}
-      <Section>
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-            Our Leadership
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Led by qualified Company Secretaries with extensive experience in corporate law and compliance
-          </p>
-        </div>
-        
-        <div className="max-w-2xl mx-auto">
-          <Card className="text-center p-8 border-l-4 border-[#3AA6FF]">
-            <CardContent className="p-0">
-              <div className="w-32 h-32 bg-gradient-to-r from-[#3AA6FF] to-[#2690E6] rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-white font-bold text-3xl">PK</span>
-              </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-2">CS Praveen Kumar</h3>
-              <p className="text-[#3AA6FF] font-medium mb-4">Founder & Managing Partner</p>
-              <p className="text-gray-600 leading-relaxed mb-6 text-justify">
-                Qualified Company Secretary and the visionary founder of M/s Praveen K & Associates. With extensive 
-                experience in corporate compliance, governance, and strategic advisory, CS Praveen Kumar leads 
-                the team of young professionals committed to delivering quality services in a time-bound manner.
-              </p>
-              <div className="text-sm text-gray-500">
-                <p>Company Secretary • Corporate Law Expert • Strategic Advisor</p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-
-        {/* Team Description */}
-        <div className="mt-12 text-center">
-          <Card className="p-8 bg-gradient-to-r from-blue-50 to-indigo-50 border-0">
-            <CardContent className="p-0">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Why Work With Us?</h3>
-              <p className="text-gray-600 leading-relaxed max-w-3xl mx-auto text-justify">
-                At M/s Praveen K & Associates, we believe our people are our greatest asset. We provide a collaborative 
-                environment where professionals can grow, learn, and make a meaningful impact on businesses across India.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-      </Section>
-    </>
+    </div>
   );
 }

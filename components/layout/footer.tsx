@@ -1,281 +1,274 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, MessageSquare, Facebook, Twitter, Linkedin, Instagram, ExternalLink } from "lucide-react";
-import { Container } from "@/components/ui/container";
-import { serviceCategories } from "@/lib/data/services";
+import {
+  Phone, Mail, MapPin, MessageSquare,
+  Facebook, Twitter, Linkedin, Instagram,
+  ExternalLink, ArrowUpRight, Zap
+} from "lucide-react";
 
+const quickLinks = [
+  { label: "About Us",            href: "/about" },
+  { label: "Our Services",        href: "/services" },
+  { label: "Case Studies",        href: "/case-studies" },
+  { label: "Blog & Insights",     href: "/blogs" },
+  { label: "Careers",             href: "/career" },
+  { label: "Contact Us",          href: "/contact" },
+];
+
+const services = [
+  { label: "Google Ads (PPC)",        href: "/services/google-ads" },
+  { label: "SEO & Organic Growth",    href: "/services/seo" },
+  { label: "Facebook & Instagram Ads",href: "/services/social-media-ads" },
+  { label: "Brand Bidding",           href: "/services/brand-bidding" },
+  { label: "Performance Marketing",   href: "/services/performance-marketing" },
+  { label: "International Campaigns", href: "/services/international-campaigns" },
+  { label: "YouTube Advertising",     href: "/services/youtube-ads" },
+  { label: "Website Development",     href: "/services/website-development" },
+];
+
+const usefulLinks = [
+  { label: "Google Ads Manager",   href: "https://ads.google.com" },
+  { label: "Google Analytics",     href: "https://analytics.google.com" },
+  { label: "Google Search Console",href: "https://search.google.com/search-console" },
+  { label: "Meta Ads Manager",     href: "https://www.facebook.com/adsmanager" },
+  { label: "Google Merchant Center",href: "https://merchants.google.com" },
+  { label: "Disclaimer",           href: "/disclaimer", internal: true },
+];
+
+const socialLinks = [
+  { icon: Facebook,  href: "https://www.facebook.com/rigvedaadds",  label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/rigvedaadds", label: "Instagram" },
+  { icon: Linkedin,  href: "https://www.linkedin.com/company/rigvedaadds", label: "LinkedIn" },
+  { icon: Twitter,   href: "https://twitter.com/rigvedaadds",       label: "X (Twitter)" },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
-      <Container>
-        <div className="py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {/* Company Info */}
+    <footer className="bg-[#0B0B0F] text-white relative overflow-hidden">
+
+      {/* Top glow border */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-violet-500/60 to-transparent" />
+
+      {/* Background blob */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-violet-900/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="pt-16 pb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+
+            {/* ── Company Info */}
             <div className="lg:col-span-1">
-              <Link href="/" className="flex items-center space-x-3 mb-6">
-                <div className="relative w-full h-16">
+              <Link href="/" className="inline-flex items-center gap-2.5 mb-6 group">
+                <div className="relative w-36 h-12">
                   <Image
                     src="/LOGO.png"
-                    alt="CS Praveen Kumar Logo"
-                    width={100}
-                    height={100}
-                    className="rounded-lg object-contain"
+                    alt="Rigveda Ads"
+                    fill
+                    className="object-contain"
                   />
                 </div>
               </Link>
-              <p className="text-gray-400 mb-6 leading-relaxed text-sm">
-                M/s Praveen K & Associates - Your trusted partner for Company Secretary & compliance services. 
-                We provide comprehensive professional solutions for businesses across India.
+
+              <p className="text-white/40 mb-7 leading-relaxed text-sm">
+                Rigveda Ads is a certified Google Ads &amp; performance marketing agency 
+                delivering data-driven campaigns with proven ROI — across all industries in 
+                India and internationally.
               </p>
-              <div className="space-y-3">
-                <div className="flex items-start">
-                  <MapPin className="h-4 w-4 mr-3 text-[#3AA6FF] mt-0.5 flex-shrink-0" />
-                  <div className="text-sm text-gray-300">
-                    <div>D-7/296, 2nd Floor, Sector-6</div>
-                    <div>Rohini, New Delhi - 110086</div>
+
+              <div className="space-y-3.5">
+                <div className="flex items-start gap-3">
+                  <MapPin className="h-4 w-4 text-violet-400 mt-0.5 flex-shrink-0" />
+                  <div className="text-sm text-white/50 leading-snug">
+                    D-7/296, 2nd Floor, Sector-6<br />
+                    Rohini, New Delhi — 110086
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <Phone className="h-4 w-4 mr-3 text-[#3AA6FF]" />
+
+                <div className="flex items-start gap-3">
+                  <Phone className="h-4 w-4 text-violet-400 mt-0.5 flex-shrink-0" />
                   <div className="text-sm space-y-1">
-                    <div>
-                      <a href="tel:+918800343499" className="hover:text-white transition-colors">
-                        +91 8800343499
-                      </a>
-                    </div>
-                    <div>
-                      <a href="tel:+919868428811" className="hover:text-white transition-colors">
-                        +91 9868428811
-                      </a>
-                    </div>
+                    <a href="tel:+918800343499"
+                      className="block text-white/50 hover:text-white transition-colors duration-200">
+                      +91 8800343499
+                    </a>
+                    <a href="tel:+919868428811"
+                      className="block text-white/50 hover:text-white transition-colors duration-200">
+                      +91 9868428811
+                    </a>
                   </div>
                 </div>
-                <div className="flex items-center">
-                  <MessageSquare className="h-4 w-4 mr-3 text-[#3AA6FF]" />
-                  <span className="text-sm">
-                    <a 
-                      href="https://wa.me/919811657065" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="hover:text-white transition-colors"
-                    >
-                      +91 9811657065 (WhatsApp)
+
+                <div className="flex items-center gap-3">
+                  <MessageSquare className="h-4 w-4 text-violet-400 flex-shrink-0" />
+                  <a
+                    href="https://wa.me/919811657065"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-200"
+                  >
+                    +91 9811657065 (WhatsApp)
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <Mail className="h-4 w-4 text-violet-400 flex-shrink-0" />
+                  <a
+                    href="mailto:contact@rigvedaadds.com"
+                    className="text-sm text-white/50 hover:text-white transition-colors duration-200"
+                  >
+                    contact@rigvedaadds.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* ── Quick Links */}
+            <div>
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6">
+                Quick Links
+              </h3>
+              <div className="space-y-3">
+                {quickLinks.map(({ label, href }) => (
+                  <Link key={href} href={href}
+                    className="flex items-center gap-1.5 text-white/45 hover:text-white text-sm transition-colors duration-200 group">
+                    <span className="w-1 h-1 bg-violet-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Services */}
+            <div>
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6">
+                Our Services
+              </h3>
+              <div className="space-y-3">
+                {services.map(({ label, href }) => (
+                  <Link key={href} href={href}
+                    className="flex items-center gap-1.5 text-white/45 hover:text-white text-sm transition-colors duration-200 group">
+                    <span className="w-1 h-1 bg-violet-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    {label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* ── Useful Links */}
+            <div>
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6">
+                Useful Links
+              </h3>
+              <div className="space-y-3">
+                {usefulLinks.map(({ label, href, internal }) =>
+                  internal ? (
+                    <Link key={href} href={href}
+                      className="flex items-center gap-1.5 text-white/45 hover:text-white text-sm transition-colors duration-200 group">
+                      <span className="w-1 h-1 bg-violet-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                      {label}
+                    </Link>
+                  ) : (
+                    <a key={href} href={href} target="_blank" rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-white/45 hover:text-white text-sm transition-colors duration-200 group">
+                      <span className="w-1 h-1 bg-violet-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                      {label}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-60 transition-opacity ml-auto" />
                     </a>
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <Mail className="h-4 w-4 mr-3 text-[#3AA6FF]" />
-                  <span className="text-sm">
-                    <a href="mailto:contact@cspkindia.com" className="hover:text-white transition-colors">
-                      contact@cspkindia.com
-                    </a>
-                  </span>
-                </div>
+                  )
+                )}
               </div>
             </div>
 
-
-            {/* Quick Links */}
+            {/* ── Info + Social */}
             <div>
-              <h3 className="text-lg font-semibold mb-6">Quick Links</h3>
-              <div className="space-y-3">
-                <Link href="/about" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  About Us
-                </Link>
-                <Link href="/services" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  Our Services
-                </Link>
-                <Link href="/blogs" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  Blogs & Articles
-                </Link>
-                <Link href="/career" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  Career Opportunities
-                </Link>
-                <Link href="/contact" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  Contact Us
-                </Link>
-                <Link href="/contact" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  Rate Us
-                </Link>
-              </div>
-            </div>
+              <h3 className="text-sm font-bold text-white uppercase tracking-widest mb-6">
+                Agency Info
+              </h3>
 
-
-            {/* Useful Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Useful Links</h3>
-              <div className="space-y-3">
-                <a 
-                  href="https://incometaxindia.gov.in/pages/pan.aspx" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center text-gray-400 hover:text-white transition-colors text-sm group"
-                >
-                  <span>PAN</span>
-                  <ExternalLink className="h-3 w-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-                <a 
-                  href="https://incometaxindia.gov.in/Pages/tan-tds.aspx" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center text-gray-400 hover:text-white transition-colors text-sm group"
-                >
-                  <span>TAN</span>
-                  <ExternalLink className="h-3 w-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-                <a 
-                  href="https://eportal.incometax.gov.in/iec/foservices/#/login" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center text-gray-400 hover:text-white transition-colors text-sm group"
-                >
-                  <span>Income Tax E-Filing</span>
-                  <ExternalLink className="h-3 w-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-                <a 
-                  href="https://www.mca.gov.in/content/mca/global/en/home.html" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center text-gray-400 hover:text-white transition-colors text-sm group"
-                >
-                  <span>MCA</span>
-                  <ExternalLink className="h-3 w-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-                <a 
-                  href="https://www.rbi.org.in/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="flex items-center text-gray-400 hover:text-white transition-colors text-sm group"
-                >
-                  <span>RBI</span>
-                  <ExternalLink className="h-3 w-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </a>
-                <Link 
-                  href="/disclaimer" 
-                  className="block text-gray-400 hover:text-white transition-colors text-sm"
-                >
-                  Disclaimer
-                </Link>
-              </div>
-            </div>
-
-
-            {/* Popular Services */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Popular Services</h3>
-              <div className="space-y-3">
-                <Link href="/services/private-limited-company" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  Private Limited Company
-                </Link>
-                <Link href="/services/opc-registration" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  One Person Company
-                </Link>
-                <Link href="/services/llp-registration" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  LLP Registration
-                </Link>
-                <Link href="/services/annual-compliance" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  Annual Compliance
-                </Link>
-                <Link href="/services/trademark" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  Trademark Registration
-                </Link>
-                <Link href="/services/secretarial-audit" className="block text-gray-400 hover:text-white transition-colors text-sm">
-                  Secretarial Audit
-                </Link>
-              </div>
-            </div>
-
-
-            {/* Business Hours & Social Media */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Professional Information</h3>
-              
-              {/* Business Hours */}
-              <div className="mb-6">
-                <h4 className="text-sm font-medium text-gray-300 mb-3">Business Hours</h4>
-                <div className="space-y-2 text-sm text-gray-400">
-                  <div>Monday - Saturday: 10:00 AM - 7:00 PM</div>
-                  <div>Sunday: Closed</div>
+              {/* Hours */}
+              <div className="mb-6 bg-white/[0.03] border border-white/5 rounded-xl p-4">
+                <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-3">
+                  Working Hours
+                </p>
+                <div className="space-y-1.5 text-xs text-white/50">
+                  <div className="flex justify-between">
+                    <span>Mon – Sat</span>
+                    <span className="text-white/70">10:00 AM – 7:00 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Sunday</span>
+                    <span className="text-red-400/70">Closed</span>
+                  </div>
                 </div>
               </div>
 
-
-              {/* Professional Credentials */}
-              <div className="mb-6">
-                <h4 className="text-sm font-medium text-gray-300 mb-3">Credentials</h4>
-                <div className="space-y-2 text-sm text-gray-400">
-                  <div>• ICSI Qualified Company Secretary</div>
-                  <div>• 7+ Years Professional Experience</div>
-                  <div>• Pan India Service Coverage</div>
+              {/* Credentials */}
+              <div className="mb-7 bg-white/[0.03] border border-white/5 rounded-xl p-4">
+                <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-3">
+                  Why Us
+                </p>
+                <div className="space-y-2">
+                  {[
+                    "Google Certified Partner",
+                    "8+ Years of Experience",
+                    "500+ Campaigns Managed",
+                    "Pan-India + International",
+                  ].map((item) => (
+                    <div key={item} className="flex items-center gap-2">
+                      <Zap className="w-3 h-3 text-violet-400 flex-shrink-0" />
+                      <span className="text-xs text-white/50">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
-              
-              {/* Social Media Links */}
-              <div>
-                <h4 className="text-sm font-medium text-gray-300 mb-3">Social Media</h4>
-                <div className="flex space-x-4">
-                  <a 
-                    href="#" 
-                    className="text-gray-400 hover:text-white transition-colors"
-                    aria-label="Meta (Facebook)"
-                    title="Meta (Facebook)"
-                  >
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a 
-                    href="#" 
-                    className="text-gray-400 hover:text-white transition-colors"
-                    aria-label="X (Twitter)"
-                    title="X (Twitter)"
-                  >
-                    <Twitter className="h-5 w-5" />
-                  </a>
-                  <a 
-                    href="#" 
-                    className="text-gray-400 hover:text-white transition-colors"
-                    aria-label="LinkedIn"
-                    title="LinkedIn"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                  </a>
-                  <a 
-                    href="#" 
-                    className="text-gray-400 hover:text-white transition-colors"
-                    aria-label="Instagram"
-                    title="Instagram"
-                  >
-                    <Instagram className="h-5 w-5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-center md:text-left">
-              <p className="text-gray-400 text-sm">
-                © 2025 M/s Praveen K & Associates. All rights reserved. Developed By <a href="https://www.proshala.com" className="text-blue-500 hover:text-blue-400 transition-colors">Proshala Tech</a>
+              {/* Social */}
+              <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-3">
+                Follow Us
               </p>
+              <div className="flex gap-3">
+                {socialLinks.map(({ icon: Icon, href, label }) => (
+                  <a key={href} href={href} target="_blank" rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-9 h-9 bg-white/5 border border-white/8 rounded-xl flex items-center justify-center text-white/40 hover:text-white hover:bg-violet-500/20 hover:border-violet-500/40 transition-all duration-200">
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-wrap justify-center md:justify-end space-x-6">
-              <Link href="/privacy-policy" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms-of-service" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Terms of Service
-              </Link>
-              <Link href="/disclaimer" className="text-gray-400 hover:text-white text-sm transition-colors">
-                Disclaimer
-              </Link>
+
+          </div>
+        </div>
+
+        {/* ── Bottom Bar */}
+        <div className="border-t border-white/5 py-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/25 text-xs text-center md:text-left">
+              © {new Date().getFullYear()} Rigveda Ads. All rights reserved. Developed by{" "}
+              <a
+                href="https://www.proshala.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-violet-400 hover:text-violet-300 transition-colors"
+              >
+                Proshala Tech
+              </a>
+            </p>
+            <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2">
+              {[
+                { label: "Privacy Policy",   href: "/privacy-policy" },
+                { label: "Terms of Service", href: "/terms-of-service" },
+                { label: "Disclaimer",       href: "/disclaimer" },
+              ].map(({ label, href }) => (
+                <Link key={href} href={href}
+                  className="text-white/25 hover:text-white/70 text-xs transition-colors duration-200">
+                  {label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 }
