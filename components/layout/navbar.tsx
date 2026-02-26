@@ -28,8 +28,7 @@ function Logo({ size = "md" }: { size?: "sm" | "md" }) {
         alt="AdsHouz Digital"
         width={size === "md" ? 160 : 130}
         height={size === "md" ? 36 : 28}
-        className="object-contain w-auto"
-        style={{ filter: "brightness(0) invert(1)" }}
+        className="object-contain w-28"
         priority
       />
     </div>
