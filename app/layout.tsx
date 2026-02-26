@@ -1,7 +1,8 @@
+// app/layout.tsx
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Syne } from 'next/font/google';
-import { ThemeProvider } from 'next-themes';          // ← NEW
+import { ThemeProvider } from 'next-themes';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
 import { Toaster } from "@/components/ui/sonner";
@@ -84,12 +85,15 @@ export const metadata: Metadata = {
   verification: {
     google: 'your-google-verification-code',
   },
+  // ✅ theme-color Next.js Metadata API se — body mein <meta> ki zarurat nahi
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)',  color: '#0B0B0F' },
+    { media: '(prefers-color-scheme: light)', color: '#F2F2F7' },
+  ],
   category: 'Digital Marketing',
   metadataBase: new URL('https://rigvedaadds.com'),
 };
 
-// ─── JSON-LD Schema ────────────────────────────────────────────────────────────
-// ↓ Phone + email updated
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -118,9 +122,9 @@ const jsonLd = {
       contactPoint: [
         {
           '@type': 'ContactPoint',
-          telephone: '+91-7840000618',          // ← updated
+          telephone: '+91-7840000618',
           contactType: 'customer service',
-          email: 'info@rigvedaadds.com',         // ← updated
+          email: 'info@rigvedaadds.com',
           availableLanguage: ['English', 'Hindi'],
           areaServed: 'IN',
         },
@@ -139,8 +143,8 @@ const jsonLd = {
       url: 'https://rigvedaadds.com',
       image: 'https://rigvedaadds.com/og-image.jpg',
       priceRange: '₹₹',
-      telephone: '+91-7840000618',              // ← updated
-      email: 'info@rigvedaadds.com',             // ← updated
+      telephone: '+91-7840000618',
+      email: 'info@rigvedaadds.com',
       address: {
         '@type': 'PostalAddress',
         streetAddress: 'D-7/296, 2nd Floor, Sector-6, Rohini',
@@ -194,50 +198,66 @@ const jsonLd = {
   ],
 };
 
-// ─── Root Layout ──────────────────────────────────────────────────────────────
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
+      // ✅ NO hardcoded "dark" class here — ThemeProvider inject karega
       className={`${inter.variable} ${syne.variable}`}
-      suppressHydrationWarning   // ← CHANGE 1: prevents next-themes hydration flash
+      suppressHydrationWarning
     >
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        {/* theme-color removed from here — handled dynamically below */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script
+    dangerouslySetInnerHTML={{
+      __html: `
+        (function() {
+          try {
+            var stored = localStorage.getItem('rigveda-theme');
+            var theme = stored || 'dark';
+            if (theme === 'system') {
+              theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.classList.add(theme);
+            document.documentElement.setAttribute('data-theme', theme);
+          } catch(e) {}
+        })();
+      `,
+    }}
+  />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-white dark:bg-[#0B0B0F] text-gray-900 dark:text-white`}>
-
-        {/* CHANGE 2: Wrap everything in ThemeProvider */}
+      <body
+        className={`
+          ${inter.variable} font-sans antialiased
+          bg-white dark:bg-[#0B0B0F]
+          text-gray-900 dark:text-white
+        `}
+      >
         <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
+          attribute="class"       // ✅ adds/removes "dark" class on <html>
+          defaultTheme="dark"     // ✅ dark by default on first visit
+          enableSystem            // ✅ respects OS preference after first visit
+          storageKey="rigveda-theme" // ✅ persists user's manual toggle in localStorage
           disableTransitionOnChange={false}
         >
-          {/* CHANGE 3: Dynamic theme-color meta for mobile browser chrome */}
-          <meta name="theme-color" content="#0B0B0F" media="(prefers-color-scheme: dark)" />
-          <meta name="theme-color" content="#F2F2F7" media="(prefers-color-scheme: light)" />
-
           <Navbar />
           <main>{children}</main>
           <Footer />
-
-          {/* CHANGE 4: Toaster now reads theme from ThemeProvider context */}
           <Toaster
             theme="system"
             toastOptions={{
               classNames: {
-                toast: "dark:bg-[#13131A] dark:border-white/8 dark:text-white bg-white border-black/10 text-gray-900",
+                toast:
+                  "dark:bg-[#13131A] dark:border-white/8 dark:text-white bg-white border-black/10 text-gray-900",
               },
             }}
           />

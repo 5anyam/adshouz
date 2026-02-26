@@ -118,15 +118,16 @@ function ScaleIn({ children, delay = 0, className = "" }: {
 const PHONE      = "+917840000618";
 const PHONE_DISP = "+91 78400 00618";
 
+// ✅ href added to every service
 const services = [
-  { icon: Target,     title: "Google Ads (PPC)",        desc: "Conversion-focused Search, Display & YouTube campaigns with same-day performance tracking." },
-  { icon: Search,     title: "SEO & Organic Growth",    desc: "White-hat SEO that ranks you on Page 1 and keeps you there with sustained organic traffic." },
-  { icon: Share2,     title: "Social Media Ads",        desc: "High-ROI paid campaigns on Meta, Instagram & LinkedIn to grow your audience and drive leads." },
-  { icon: Code2,      title: "Website Development",     desc: "High-speed, conversion-optimised sites on WordPress & Next.js that turn visitors into leads." },
-  { icon: Megaphone,  title: "Brand Bidding",           desc: "Protect your brand on Google — dominate branded search and never lose a lead to competitors." },
-  { icon: BarChart3,  title: "Analytics & Reporting",   desc: "Transparent dashboards and weekly reports. Know where every rupee of ad spend goes." },
-  { icon: TrendingUp, title: "Performance Marketing",   desc: "CPA/CPS/CPL campaigns built to maximise ROI with data-driven optimisation at every stage." },
-  { icon: Globe,      title: "International Campaigns", desc: "Scale to US, UK, UAE, Canada & Singapore with geo-targeted, localised digital strategies." },
+  { icon: Target,     href: "/services/google-ads",              title: "Google Ads (PPC)",        desc: "Conversion-focused Search, Display & YouTube campaigns with same-day performance tracking." },
+  { icon: Search,     href: "/services/seo",                     title: "SEO & Organic Growth",    desc: "White-hat SEO that ranks you on Page 1 and keeps you there with sustained organic traffic." },
+  { icon: Share2,     href: "/services/social-media-ads",        title: "Social Media Ads",        desc: "High-ROI paid campaigns on Meta, Instagram & LinkedIn to grow your audience and drive leads." },
+  { icon: Code2,      href: "/services/website-development",     title: "Website Development",     desc: "High-speed, conversion-optimised sites on WordPress & Next.js that turn visitors into leads." },
+  { icon: Megaphone,  href: "/services/brand-bidding",           title: "Brand Bidding",           desc: "Protect your brand on Google — dominate branded search and never lose a lead to competitors." },
+  { icon: BarChart3,  href: "/services/analytics-reporting",     title: "Analytics & Reporting",   desc: "Transparent dashboards and weekly reports. Know where every rupee of ad spend goes." },
+  { icon: TrendingUp, href: "/services/performance-marketing",   title: "Performance Marketing",   desc: "CPA/CPS/CPL campaigns built to maximise ROI with data-driven optimisation at every stage." },
+  { icon: Globe,      href: "/services/international-campaigns", title: "International Campaigns", desc: "Scale to US, UK, UAE, Canada & Singapore with geo-targeted, localised digital strategies." },
 ];
 
 const stats = [
@@ -262,7 +263,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 w-full relative z-10">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
-            {/* LEFT — staggered entrance */}
+            {/* LEFT */}
             <div>
               {/* Badge */}
               <div style={{ animation: "heroFadeIn 0.6s cubic-bezier(0.22,1,0.36,1) 0.05s both" }}>
@@ -275,7 +276,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Headline — each line staggered */}
+              {/* Headline */}
               <div style={{ animation: "heroFadeIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.15s both" }}>
                 <h1 className="text-[42px] sm:text-5xl lg:text-[68px] font-black leading-[1.05] mb-5 tracking-tight">
                   <span className="text-gray-900 dark:text-white">Ads That </span>
@@ -337,7 +338,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* RIGHT — slide from right */}
+            {/* RIGHT — hero image */}
             <div style={{ animation: "heroSlideRight 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s both" }}
               className="relative hidden lg:block">
               <div className="relative rounded-3xl overflow-hidden border border-gray-200 dark:border-white/8 group">
@@ -349,7 +350,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-white/10 dark:from-[#0B0B0F]/70 via-transparent to-violet-900/20" />
               </div>
 
-              {/* Floating ROI card — float animation */}
+              {/* Floating ROI card */}
               <div className="absolute -left-10 top-10 bg-white dark:bg-[#13131A]/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl p-5 shadow-2xl animate-float">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-violet-500/10 rounded-xl flex items-center justify-center">
@@ -364,7 +365,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Floating Live card — float delayed */}
+              {/* Floating Live card */}
               <div className="absolute -right-8 bottom-12 bg-white dark:bg-[#13131A]/90 backdrop-blur-sm border border-gray-200 dark:border-white/10 rounded-2xl p-5 shadow-2xl animate-float" style={{ animationDelay: "0.7s" }}>
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
@@ -378,7 +379,7 @@ export default function HomePage() {
                 <div className="text-gray-400 dark:text-white/40 text-xs mt-0.5">Active Clients</div>
               </div>
 
-              {/* Play button with pulse ring */}
+              {/* Play button */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <div className="relative">
                   <span className="absolute inset-0 rounded-full bg-white/20 dark:bg-white/10 animate-ping-slow" />
@@ -419,7 +420,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-            {/* Image collage — slide from left */}
+            {/* Image collage */}
             <FadeLeft>
               <div className="relative">
                 <div className="grid grid-cols-2 gap-3 sm:gap-4">
@@ -447,7 +448,7 @@ export default function HomePage() {
               </div>
             </FadeLeft>
 
-            {/* Content — slide from right */}
+            {/* Content */}
             <FadeRight delay={100}>
               <Label text="Our Expertise" />
               <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.08] mb-6 tracking-tight">
@@ -466,15 +467,12 @@ export default function HomePage() {
               </p>
               <div className="space-y-3 mb-8">
                 {expertise.map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 group"
-                    style={{ animation: `expertiseIn 0.5s ease ${i * 80}ms both`, animationPlayState: "paused" }}>
-                    <FadeUp delay={i * 60}>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-violet-500 dark:text-violet-400 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" />
-                        <span className="text-gray-600 dark:text-white/70 text-sm group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">{item}</span>
-                      </div>
-                    </FadeUp>
-                  </div>
+                  <FadeUp key={i} delay={i * 60}>
+                    <div className="flex items-center gap-3 group">
+                      <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-violet-500 dark:text-violet-400 flex-shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                      <span className="text-gray-600 dark:text-white/70 text-sm group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">{item}</span>
+                    </div>
+                  </FadeUp>
                 ))}
               </div>
 
@@ -504,19 +502,25 @@ export default function HomePage() {
             </p>
           </FadeUp>
 
+          {/* ✅ Cards — poora card Link hai */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {services.map(({ icon: Icon, title, desc }, i) => (
+            {services.map(({ icon: Icon, title, desc, href }, i) => (
               <ScaleIn key={i} delay={i * 70}>
-                <div className="group bg-white dark:bg-[#13131A] border border-gray-200 dark:border-white/5 rounded-2xl p-5 sm:p-6 hover:border-violet-500/50 hover:bg-gray-50 dark:hover:bg-[#16161F] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-violet-500/10 cursor-default h-full shadow-sm dark:shadow-none">
+                <Link
+                  href={href}
+                  className="group bg-white dark:bg-[#13131A] border border-gray-200 dark:border-white/5 rounded-2xl p-5 sm:p-6 hover:border-violet-500/50 hover:bg-gray-50 dark:hover:bg-[#16161F] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-violet-500/10 h-full shadow-sm dark:shadow-none flex flex-col"
+                >
                   <div className="w-10 h-10 bg-violet-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-violet-500/20 group-hover:scale-110 transition-all duration-300">
                     <Icon className="w-5 h-5 text-violet-500 dark:text-violet-400 group-hover:rotate-6 transition-transform duration-300" />
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-[14px] sm:text-[15px] group-hover:text-violet-600 dark:group-hover:text-violet-300 transition-colors duration-200">{title}</h3>
-                  <p className="text-gray-400 dark:text-white/40 text-xs leading-relaxed">{desc}</p>
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-[14px] sm:text-[15px] group-hover:text-violet-600 dark:group-hover:text-violet-300 transition-colors duration-200">
+                    {title}
+                  </h3>
+                  <p className="text-gray-400 dark:text-white/40 text-xs leading-relaxed flex-1">{desc}</p>
                   <div className="mt-4 flex items-center text-violet-500 dark:text-violet-400 text-xs font-semibold opacity-0 group-hover:opacity-100 translate-x-[-8px] group-hover:translate-x-0 transition-all duration-300">
                     Learn more <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
                   </div>
-                </div>
+                </Link>
               </ScaleIn>
             ))}
           </div>
@@ -556,8 +560,6 @@ export default function HomePage() {
             {process.map(({ step, title, desc }, i) => (
               <FadeUp key={i} delay={i * 120}>
                 <div className="relative flex lg:block gap-5 lg:gap-0 bg-white dark:bg-[#13131A] border border-gray-200 dark:border-white/5 rounded-2xl p-5 sm:p-7 hover:border-violet-500/40 hover:shadow-xl hover:shadow-violet-500/8 transition-all duration-300 hover:-translate-y-2 h-full shadow-sm dark:shadow-none group">
-
-                  {/* Step number with animated bg */}
                   <div className="text-5xl sm:text-6xl font-black text-violet-500/15 group-hover:text-violet-500/25 transition-colors duration-300 tabular-nums flex-shrink-0 lg:mb-4 leading-none">
                     {step}
                   </div>
@@ -565,8 +567,6 @@ export default function HomePage() {
                     <h3 className="font-bold text-gray-900 dark:text-white mb-1.5 text-sm sm:text-base group-hover:text-violet-600 dark:group-hover:text-violet-300 transition-colors duration-200">{title}</h3>
                     <p className="text-gray-400 dark:text-white/45 text-xs sm:text-sm leading-relaxed">{desc}</p>
                   </div>
-
-                  {/* Animated connector line */}
                   {i < 3 && (
                     <div className="hidden lg:block absolute top-7 left-full w-full h-px z-10 overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-violet-500/40 to-transparent animate-line-grow" />
@@ -597,7 +597,6 @@ export default function HomePage() {
               <div className="absolute top-0 right-0 w-48 h-48 bg-violet-700/5 rounded-full blur-2xl pointer-events-none" />
               <Quote className="w-10 h-10 text-violet-500/15 absolute top-6 right-6" />
 
-              {/* Stars */}
               <div className="flex gap-1 mb-5">
                 {[...Array(testimonials[activeT].rating)].map((_, i) => (
                   <Star key={i} className="w-4 h-4 sm:w-5 sm:h-5 fill-yellow-400 text-yellow-400"
@@ -713,63 +712,59 @@ export default function HomePage() {
           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
           <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
           <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-violet-600/15 rounded-full blur-[120px] animate-pulse-slow" />
-          <div className="absolute inset-0 opacity-[0.04]"
-            style={{ backgroundImage: 'radial-gradient(circle, #8B5CF6 1px, transparent 1px)', backgroundSize: '44px 44px' }}
-          />
         </div>
-        <FadeUp className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8 text-center relative z-10">
-          <ScaleIn>
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-4 text-white">
-              Ready to{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-purple-200 animate-gradient">
-                Grow?
-              </span>
-            </h2>
-          </ScaleIn>
-          <FadeUp delay={100}>
-            <p className="text-white/70 text-base sm:text-lg mb-8 max-w-xl mx-auto leading-relaxed px-2">
-              Get a free Google Ads audit and custom strategy — see exactly how we'll grow
-              your business before you spend a single rupee.
-            </p>
-          </FadeUp>
-          <FadeUp delay={200}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-black px-8 sm:px-10 py-4 sm:py-5 rounded-2xl hover:opacity-90 hover:-translate-y-1 hover:shadow-2xl hover:shadow-violet-500/50 active:scale-95 transition-all duration-200 shadow-2xl shadow-violet-500/35 text-base sm:text-lg group">
-                Start Free Audit
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
-              </Link>
-              <a href={`tel:${PHONE}`}
-                className="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-bold px-8 sm:px-10 py-4 sm:py-5 rounded-2xl hover:bg-white/10 hover:-translate-y-0.5 active:scale-95 transition-all duration-200 text-base sm:text-lg">
-                <Phone className="w-5 h-5" /> {PHONE_DISP}
-              </a>
-            </div>
-          </FadeUp>
+        <FadeUp className="max-w-2xl mx-auto px-5 sm:px-6 text-center relative z-10">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
+            Ready to{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-300 to-pink-300">
+              10x Your ROI?
+            </span>
+          </h2>
+          <p className="text-white/55 text-sm sm:text-base mb-8 leading-relaxed">
+            Join 500+ businesses already scaling with Rigveda Ads. Get your free
+            audit today — no obligation, just actionable insights.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link href="/contact"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-bold px-8 py-4 rounded-2xl hover:opacity-90 hover:-translate-y-1 hover:shadow-2xl hover:shadow-violet-500/40 active:scale-95 transition-all duration-200 shadow-xl shadow-violet-500/30 text-sm sm:text-base group">
+              Get Free Audit
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-200" />
+            </Link>
+            <a href={`tel:${PHONE}`}
+              className="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-2xl hover:bg-white/10 hover:-translate-y-0.5 active:scale-95 transition-all duration-200 text-sm sm:text-base">
+              <Phone className="w-4 h-4" /> {PHONE_DISP}
+            </a>
+          </div>
         </FadeUp>
       </section>
 
-      {/* ══════════════════════════ VIDEO MODAL ══════════════════════════ */}
+      {/* ══════════════════════════ VIDEO MODAL ═══════════════════════════ */}
       {videoOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm flex items-center justify-center p-4"
-          style={{ animation: "fadeIn 0.2s ease both" }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
           onClick={() => setVideoOpen(false)}
+          style={{ animation: "modalIn 0.3s ease both" }}
         >
           <div
-            className="relative w-full max-w-3xl bg-white dark:bg-[#13131A] rounded-2xl overflow-hidden border border-gray-200 dark:border-white/10"
-            style={{ animation: "modalSlideUp 0.35s cubic-bezier(0.22,1,0.36,1) both" }}
+            className="relative w-full max-w-3xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
             onClick={e => e.stopPropagation()}
           >
-            <button onClick={() => setVideoOpen(false)}
-              className="absolute top-3 right-3 z-10 w-8 h-8 bg-black/10 dark:bg-white/10 rounded-full flex items-center justify-center hover:bg-black/20 dark:hover:bg-white/20 hover:rotate-90 transition-all duration-300">
-              <X className="w-4 h-4 text-gray-700 dark:text-white" />
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+              title="Rigveda Ads"
+              allow="autoplay; fullscreen"
+              className="w-full h-full"
+            />
+            <button
+              onClick={() => setVideoOpen(false)}
+              className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+            >
+              <X className="w-4 h-4" />
             </button>
-            <div className="aspect-video bg-gray-100 dark:bg-[#0B0B0F] flex items-center justify-center">
-              <p className="text-gray-400 dark:text-white/30 text-sm">Add your video embed here</p>
-            </div>
           </div>
         </div>
       )}
+
     </div>
   );
 }

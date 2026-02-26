@@ -165,5 +165,211 @@ img, video, svg {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+/* globals.css */
 
+/* ── WordPress Blog Content ─────────────────────────────── */
+.wp-content h1,
+.wp-content h2,
+.wp-content h3,
+.wp-content h4,
+.wp-content h5,
+.wp-content h6 {
+  font-weight: 800;
+  line-height: 1.2;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  color: #111827; /* gray-900 */
+}
 
+.dark .wp-content h1,
+.dark .wp-content h2,
+.dark .wp-content h3,
+.dark .wp-content h4,
+.dark .wp-content h5,
+.dark .wp-content h6 {
+  color: #ffffff;
+}
+
+.wp-content h2 { font-size: 1.5rem; }
+.wp-content h3 { font-size: 1.25rem; }
+
+.wp-content p {
+  color: #4b5563;        /* gray-600 */
+  line-height: 1.8;
+  margin-bottom: 1.2em;
+  font-size: 1rem;
+}
+
+.dark .wp-content p {
+  color: rgba(255,255,255,0.65);
+}
+
+.wp-content ul,
+.wp-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2em;
+  color: #4b5563;
+}
+
+.dark .wp-content ul,
+.dark .wp-content ol {
+  color: rgba(255,255,255,0.65);
+}
+
+.wp-content ul { list-style-type: disc; }
+.wp-content ol { list-style-type: decimal; }
+
+.wp-content li {
+  margin-bottom: 0.4em;
+  line-height: 1.7;
+}
+
+.wp-content ul li::marker,
+.wp-content ol li::marker {
+  color: #7c3aed; /* violet-600 */
+}
+
+.wp-content a {
+  color: #7c3aed;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wp-content a:hover {
+  text-decoration: underline;
+}
+
+.dark .wp-content a {
+  color: #a78bfa; /* violet-400 */
+}
+
+.wp-content strong,
+.wp-content b {
+  font-weight: 700;
+  color: #111827;
+}
+
+.dark .wp-content strong,
+.dark .wp-content b {
+  color: #ffffff;
+}
+
+.wp-content blockquote {
+  border-left: 3px solid #7c3aed;
+  background: rgba(124, 58, 237, 0.05);
+  padding: 1rem 1.25rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  margin: 1.5em 0;
+  color: #374151;
+}
+
+.dark .wp-content blockquote {
+  background: rgba(124, 58, 237, 0.1);
+  color: rgba(255,255,255,0.7);
+}
+
+.wp-content blockquote p { margin-bottom: 0; }
+
+.wp-content code {
+  background: rgba(124, 58, 237, 0.08);
+  color: #7c3aed;
+  padding: 0.15em 0.4em;
+  border-radius: 0.3rem;
+  font-size: 0.875em;
+}
+
+.dark .wp-content code {
+  background: rgba(124, 58, 237, 0.15);
+  color: #a78bfa;
+}
+
+.wp-content pre {
+  background: #1e1e2e;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+.wp-content pre code {
+  background: transparent;
+  color: #e2e8f0;
+  padding: 0;
+}
+
+.wp-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 1.5em auto;
+  display: block;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.dark .wp-content img {
+  border-color: rgba(255,255,255,0.06);
+}
+
+.wp-content hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 2em 0;
+}
+
+.dark .wp-content hr {
+  border-color: rgba(255,255,255,0.08);
+}
+
+.wp-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.wp-content th {
+  background: #f3f4f6;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.dark .wp-content th {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.wp-content td {
+  padding: 0.6rem 1rem;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.dark .wp-content td {
+  border-color: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.65);
+}
+html {
+  background-color: #0B0B0F;
+  color-scheme: dark light;
+}
+
+html.light {
+  background-color: #ffffff;
+  color-scheme: light;
+}
+/* globals.css */
+
+/* Force dark background immediately — flash prevent */
+html.dark {
+  background-color: #0F0F15 !important;
+}
+
+html.dark body {
+  background-color: #0B0B0F !important;
+  color: #ffffff !important;
+}
