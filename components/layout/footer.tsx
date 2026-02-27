@@ -15,9 +15,6 @@ function Logo() {
   return (
     <div className="flex flex-col leading-none select-none">
       <img src="/adshouz-logo.jpg" alt="adshouz" />
-      <span className="font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300 text-[24px]">
-        Adshouz Digital LLP.
-      </span>
     </div>
   );
 }
