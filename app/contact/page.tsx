@@ -10,10 +10,10 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const PHONE      = "+917840000618";
-const PHONE_DISP = "+91 78400 00618";
-const EMAIL      = "info@rigvedaadds.com";
-const ADDRESS    = "Delhi, India";
+const PHONE      = "+918588837072";
+const PHONE_DISP = "+91 85888 37072";
+const EMAIL      = "info@adshouz.com";
+const ADDRESS    = "Pitampura, Delhi, India";
 
 // ─── Data ──────────────────────────────────────────────────────
 const contactInfo = [

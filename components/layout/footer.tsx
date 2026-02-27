@@ -6,19 +6,16 @@ import {
 } from "lucide-react";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const PHONE      = "+917840000618";
-const PHONE_DISP = "+91 78400 00618";
-const EMAIL      = "info@rigvedaadds.com";
+const PHONE      = "+918588837072";
+const PHONE_DISP = "+91 85888 37072";
+const EMAIL      = "marketing@adshouz.com";
 
 // ─── Text Logo ────────────────────────────────────────────────────────────────
 function Logo() {
   return (
     <div className="flex flex-col leading-none select-none">
       <span className="font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-300 text-[24px]">
-        Rigveda
-      </span>
-      <span className="font-semibold tracking-widest uppercase text-white/40 text-[8px] mt-0.5">
-        Ads Agency Pvt. Ltd.
+        Adshouz Digital LLP.
       </span>
     </div>
   );

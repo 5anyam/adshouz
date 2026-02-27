@@ -115,8 +115,8 @@ function ScaleIn({ children, delay = 0, className = "" }: {
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
-const PHONE      = "+917840000618";
-const PHONE_DISP = "+91 78400 00618";
+const PHONE      = "+918588837072";
+const PHONE_DISP = "+91 85888 37072";
 
 const services = [
   { icon: Target,     href: "/services/google-ads",              title: "Google Ads (PPC)",        desc: "Conversion-focused Search, Display & YouTube campaigns engineered for maximum ROAS with daily optimisation." },

@@ -123,7 +123,7 @@ const jsonLd = {
       contactPoint: [
         {
           '@type': 'ContactPoint',
-          telephone: '+91-7840000618',
+          telephone: '+91-8588837072',
           contactType: 'customer service',
           email: 'info@adshouz.com',
           availableLanguage: ['English', 'Hindi'],
