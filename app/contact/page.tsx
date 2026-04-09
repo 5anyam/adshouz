@@ -38,7 +38,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Location",
-    value: "Delhi, India",
+    value: "NU-95A, Pitampura, New Delhi - 110034 , India",
     sub: "Serving clients Pan India",
     href: "https://maps.google.com",
     color: "text-pink-500",
