@@ -89,7 +89,7 @@ export function Footer() {
                 <div className="flex items-start gap-3">
                   <MapPin className="h-4 w-4 text-sky-400 mt-0.5 flex-shrink-0" />
                   <div className="text-sm text-white/50 leading-snug">
-                    Delhi, India
+                    NU-95A, Pitampura, New Delhi - 110034 , India
                   </div>
                 </div>
 
