@@ -1,7 +1,7 @@
 // app/layout.tsx
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Syne } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { Navbar } from '@/components/layout/navbar';
 import { Footer } from '@/components/layout/footer';
@@ -15,13 +15,15 @@ const inter = Inter({
   preload: false,                     // ← yeh bhi
 });
 
-const syne = Syne({
+// Geometric sans that echoes the circular, even-stroke letterforms of the
+// "Houz" in the logo. Used for headings via `font-display`.
+const poppins = Poppins({
   subsets: ['latin'],
-  variable: '--font-syne',
-  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-display',
+  weight: ['400', '500', '600', '700', '800', '900'],
   display: 'swap',
-  fallback: ['system-ui', 'arial'],  // ← yeh add karo
-  preload: false,                     // ← yeh bhi
+  fallback: ['system-ui', 'arial'],
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -216,7 +218,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${syne.variable}`}
+      className={`${inter.variable} ${poppins.variable}`}
       suppressHydrationWarning
     >
       <head>

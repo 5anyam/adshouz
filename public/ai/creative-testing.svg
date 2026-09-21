@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" fill="none" role="img" aria-label="Creative testing: a grid of ad variants with the winning variant highlighted">
+  <g stroke="#0EA5E9" stroke-opacity="0.22" stroke-width="1.5" fill="#0EA5E9" fill-opacity="0.05">
+    <rect x="34"  y="40"  width="92" height="70" rx="8"/>
+    <rect x="138" y="40"  width="92" height="70" rx="8"/>
+    <rect x="346" y="40"  width="92" height="70" rx="8"/>
+    <rect x="34"  y="130" width="92" height="70" rx="8"/>
+    <rect x="138" y="130" width="92" height="70" rx="8"/>
+    <rect x="242" y="130" width="92" height="70" rx="8"/>
+    <rect x="346" y="130" width="92" height="70" rx="8"/>
+  </g>
+
+  <g fill="#0EA5E9" fill-opacity="0.22">
+    <rect x="44"  y="50"  width="72" height="26" rx="4"/>
+    <rect x="148" y="50"  width="72" height="26" rx="4"/>
+    <rect x="356" y="50"  width="72" height="26" rx="4"/>
+    <rect x="44"  y="140" width="72" height="26" rx="4"/>
+    <rect x="148" y="140" width="72" height="26" rx="4"/>
+    <rect x="252" y="140" width="72" height="26" rx="4"/>
+    <rect x="356" y="140" width="72" height="26" rx="4"/>
+  </g>
+  <g fill="#94A3B8" fill-opacity="0.45">
+    <rect x="44"  y="84"  width="60" height="5" rx="2.5"/><rect x="44"  y="95"  width="38" height="5" rx="2.5"/>
+    <rect x="148" y="84"  width="60" height="5" rx="2.5"/><rect x="148" y="95"  width="38" height="5" rx="2.5"/>
+    <rect x="356" y="84"  width="60" height="5" rx="2.5"/><rect x="356" y="95"  width="38" height="5" rx="2.5"/>
+    <rect x="44"  y="174" width="60" height="5" rx="2.5"/><rect x="44"  y="185" width="38" height="5" rx="2.5"/>
+    <rect x="148" y="174" width="60" height="5" rx="2.5"/><rect x="148" y="185" width="38" height="5" rx="2.5"/>
+    <rect x="252" y="174" width="60" height="5" rx="2.5"/><rect x="252" y="185" width="38" height="5" rx="2.5"/>
+    <rect x="356" y="174" width="60" height="5" rx="2.5"/><rect x="356" y="185" width="38" height="5" rx="2.5"/>
+  </g>
+
+  <!-- winning variant -->
+  <rect x="242" y="40" width="92" height="70" rx="8" fill="#38BDF8" fill-opacity="0.16" stroke="#38BDF8" stroke-width="2.5"/>
+  <rect x="252" y="50" width="72" height="26" rx="4" fill="#38BDF8" fill-opacity="0.6"/>
+  <rect x="252" y="84" width="60" height="5" rx="2.5" fill="#67E8F9" fill-opacity="0.9"/>
+  <rect x="252" y="95" width="38" height="5" rx="2.5" fill="#67E8F9" fill-opacity="0.6"/>
+  <circle cx="334" cy="40" r="13" fill="#0EA5E9"/>
+  <path d="M328 40.5l4 4 8-8.5" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

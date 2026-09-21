@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 110" fill="none" role="img" aria-label="Bid optimisation: cost falling while conversions rise">
+  <defs>
+    <linearGradient id="bidArea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bidLine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0EA5E9"/>
+      <stop offset="100%" stop-color="#67E8F9"/>
+    </linearGradient>
+  </defs>
+
+  <g stroke="#0EA5E9" stroke-opacity="0.14" stroke-width="1">
+    <path d="M24 26H456M24 55H456M24 84H456"/>
+    <path d="M110 12V100M192 12V100M274 12V100M356 12V100"/>
+  </g>
+
+  <path d="M40 92 110 82 180 72 250 52 320 38 390 20 444 13 444 100 40 100Z" fill="url(#bidArea)"/>
+
+  <path d="M40 28 110 38 180 36 250 52 320 63 390 76 444 84" stroke="#94A3B8" stroke-opacity="0.55"
+        stroke-width="2.2" stroke-dasharray="7 6" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <path d="M40 92 110 82 180 72 250 52 320 38 390 20 444 13" stroke="url(#bidLine)"
+        stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g fill="#0EA5E9"><circle cx="180" cy="72" r="3.6"/><circle cx="320" cy="38" r="3.6"/></g>
+  <circle cx="444" cy="13" r="6.5" fill="#38BDF8" fill-opacity="0.25"/>
+  <circle cx="444" cy="13" r="4" fill="#67E8F9"/>
+</svg>

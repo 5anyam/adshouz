@@ -1,7 +1,6 @@
 import Link from "next/link";
 import {
   Phone, Mail, MapPin, MessageSquare,
-  Facebook, Twitter, Linkedin, Instagram,
   ArrowUpRight, Zap
 } from "lucide-react";
 
@@ -48,13 +47,6 @@ const usefulLinks = [
   { label: "Meta Ads Manager",       href: "https://www.facebook.com/adsmanager" },
   { label: "Google Merchant Center", href: "https://merchants.google.com" },
   { label: "Disclaimer",             href: "/disclaimer", internal: true },
-];
-
-const socialLinks = [
-  { icon: Facebook,  href: "https://www.facebook.com/adshouz",        label: "Facebook" },
-  { icon: Instagram, href: "https://www.instagram.com/adshouz",       label: "Instagram" },
-  { icon: Linkedin,  href: "https://www.linkedin.com/company/adshouz", label: "LinkedIn" },
-  { icon: Twitter,   href: "https://twitter.com/adshouz",              label: "X (Twitter)" },
 ];
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
@@ -220,20 +212,6 @@ export function Footer() {
                     </div>
                   ))}
                 </div>
-              </div>
-
-              {/* Social */}
-              <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-3">
-                Follow Us
-              </p>
-              <div className="flex gap-3">
-                {socialLinks.map(({ icon: Icon, href, label }) => (
-                  <a key={href} href={href} target="_blank" rel="noopener noreferrer"
-                    aria-label={label}
-                    className="w-9 h-9 bg-white/5 border border-white/8 rounded-xl flex items-center justify-center text-white/40 hover:text-white hover:bg-sky-500/20 hover:border-sky-500/40 transition-all duration-200">
-                    <Icon className="h-4 w-4" />
-                  </a>
-                ))}
               </div>
             </div>
 

@@ -98,6 +98,7 @@ const aiFeatures = [
     description: "Machine-learning bid strategies rebalance every hour — cutting wasted spend while holding your target CPA.",
     className: "md:col-span-2",
     tag: "Smart Bidding",
+    image: "/ai/bid-optimisation.svg",
   },
   {
     icon: <Cpu className="h-5 w-5 text-cyan-500" />,
@@ -105,6 +106,7 @@ const aiFeatures = [
     description: "Forecast audience behaviour and budget allocation before you spend.",
     className: "md:col-span-1",
     tag: "Data Intelligence",
+    image: "/ai/predictive-analytics.svg",
   },
   {
     icon: <Sparkles className="h-5 w-5 text-indigo-500" />,
@@ -112,6 +114,7 @@ const aiFeatures = [
     description: "Hundreds of copy and creative variants tested in parallel to find winners faster.",
     className: "md:col-span-1",
     tag: "Creative AI",
+    image: "/ai/creative-testing.svg",
   },
   {
     icon: <Zap className="h-5 w-5 text-sky-500" />,
@@ -119,6 +122,7 @@ const aiFeatures = [
     description: "Live monitoring pauses underperformers instantly and scales what is working — no human lag between signal and action.",
     className: "md:col-span-2",
     tag: "Auto-Optimise",
+    image: "/ai/realtime-optimisation.svg",
   },
 ];
 
@@ -508,13 +512,16 @@ export default function HomePage() {
                 description={f.description}
                 header={
                   <div className="relative flex min-h-[6rem] w-full flex-1 overflow-hidden rounded-xl bg-gradient-to-br from-sky-500/[0.07] to-cyan-400/[0.03]">
-                    <div className="absolute inset-0 [background-image:linear-gradient(to_right,rgba(14,165,233,0.10)_1px,transparent_1px),linear-gradient(to_bottom,rgba(14,165,233,0.10)_1px,transparent_1px)] [background-size:28px_28px]" />
-                    <motion.div
-                      initial={{ opacity: 0.35 }}
-                      whileInView={{ opacity: 1 }}
+                    <div className="pointer-events-none absolute -right-6 -top-6 h-28 w-28 rounded-full bg-sky-500/20 blur-2xl" />
+                    <motion.img
+                      src={f.image}
+                      alt=""
+                      aria-hidden="true"
+                      initial={{ opacity: 0, scale: 1.04 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: i * 0.08 }}
-                      className="absolute -right-6 -top-6 h-28 w-28 rounded-full bg-sky-500/20 blur-2xl"
+                      transition={{ duration: 0.7, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                      className="relative h-full w-full object-cover object-center p-3"
                     />
                   </div>
                 }
