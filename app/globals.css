@@ -1,0 +1,391 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── Light theme ─────────────────────────────────── */
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 94%;
+    --secondary-foreground: 240 10% 4%;
+    --muted: 240 5% 92%;
+    --muted-foreground: 240 4% 40%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 88%;
+    --input: 240 6% 88%;
+    --ring: 262 83% 58%;
+    --radius: 0.5rem;
+
+    /* ── Custom surface variables (light) ─────────── */
+    --bg-base:      #F2F2F7;
+    --bg-surface:   #FFFFFF;
+    --bg-elevated:  #E8E8EF;
+    --text-primary:   #0A0A0F;
+    --text-secondary: rgba(10,10,15,0.65);
+    --text-muted:     rgba(10,10,15,0.40);
+    --surface-border: rgba(0,0,0,0.07);
+  }
+
+  /* ── Dark theme — matches your current site exactly ── */
+  .dark {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 100%;
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 12%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 5% 14%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 6% 12%;
+    --input: 240 6% 12%;
+    --ring: 262 83% 58%;
+
+    /* ── Custom surface variables (dark) ──────────── */
+    --bg-base:      #0B0B0F;
+    --bg-surface:   #13131A;
+    --bg-elevated:  #0F0F14;
+    --text-primary:   #FFFFFF;
+    --text-secondary: rgba(255,255,255,0.65);
+    --text-muted:     rgba(255,255,255,0.40);
+    --surface-border: rgba(255,255,255,0.06);
+  }
+}
+
+/* ── Smooth theme transition on everything ─────────────── */
+*, *::before, *::after {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.15s ease;
+}
+
+/* Disable transition on elements that shouldn't animate */
+img, video, svg {
+  transition: none;
+}
+
+/* ── Marquee ───────────────────────────────────────────── */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+.animate-marquee:hover { animation-play-state: paused; }
+
+/* ── Page animations ───────────────────────────────────── */
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+
+}
+
+/* ── New animation keyframes ──────────────────────────────── */
+@keyframes heroSlideRight {
+  from { opacity: 0; transform: translateX(80px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0)    scale(1); }
+}
+@keyframes starPop {
+  from { opacity: 0; transform: scale(0) rotate(-20deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes testimonialIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+@keyframes pingSlow {
+  0%   { transform: scale(1);   opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+@keyframes pulseSlow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ── Utility animation classes ───────────────────────────── */
+.animate-float        { animation: float 3.5s ease-in-out infinite; }
+.animate-ping-slow    { animation: pingSlow 2.2s ease-out infinite; }
+.animate-pulse-slow   { animation: pulseSlow 4s ease-in-out infinite; }
+.animate-gradient     {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeSlideLeft {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroSlideRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+/* globals.css */
+
+/* ── WordPress Blog Content ─────────────────────────────── */
+.wp-content h1,
+.wp-content h2,
+.wp-content h3,
+.wp-content h4,
+.wp-content h5,
+.wp-content h6 {
+  font-weight: 800;
+  line-height: 1.2;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  color: #111827; /* gray-900 */
+}
+
+.dark .wp-content h1,
+.dark .wp-content h2,
+.dark .wp-content h3,
+.dark .wp-content h4,
+.dark .wp-content h5,
+.dark .wp-content h6 {
+  color: #ffffff;
+}
+
+.wp-content h2 { font-size: 1.5rem; }
+.wp-content h3 { font-size: 1.25rem; }
+
+.wp-content p {
+  color: #4b5563;        /* gray-600 */
+  line-height: 1.8;
+  margin-bottom: 1.2em;
+  font-size: 1rem;
+}
+
+.dark .wp-content p {
+  color: rgba(255,255,255,0.65);
+}
+
+.wp-content ul,
+.wp-content ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.2em;
+  color: #4b5563;
+}
+
+.dark .wp-content ul,
+.dark .wp-content ol {
+  color: rgba(255,255,255,0.65);
+}
+
+.wp-content ul { list-style-type: disc; }
+.wp-content ol { list-style-type: decimal; }
+
+.wp-content li {
+  margin-bottom: 0.4em;
+  line-height: 1.7;
+}
+
+.wp-content ul li::marker,
+.wp-content ol li::marker {
+  color: #7c3aed; /* violet-600 */
+}
+
+.wp-content a {
+  color: #7c3aed;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wp-content a:hover {
+  text-decoration: underline;
+}
+
+.dark .wp-content a {
+  color: #a78bfa; /* violet-400 */
+}
+
+.wp-content strong,
+.wp-content b {
+  font-weight: 700;
+  color: #111827;
+}
+
+.dark .wp-content strong,
+.dark .wp-content b {
+  color: #ffffff;
+}
+
+.wp-content blockquote {
+  border-left: 3px solid #7c3aed;
+  background: rgba(124, 58, 237, 0.05);
+  padding: 1rem 1.25rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  margin: 1.5em 0;
+  color: #374151;
+}
+
+.dark .wp-content blockquote {
+  background: rgba(124, 58, 237, 0.1);
+  color: rgba(255,255,255,0.7);
+}
+
+.wp-content blockquote p { margin-bottom: 0; }
+
+.wp-content code {
+  background: rgba(124, 58, 237, 0.08);
+  color: #7c3aed;
+  padding: 0.15em 0.4em;
+  border-radius: 0.3rem;
+  font-size: 0.875em;
+}
+
+.dark .wp-content code {
+  background: rgba(124, 58, 237, 0.15);
+  color: #a78bfa;
+}
+
+.wp-content pre {
+  background: #1e1e2e;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+.wp-content pre code {
+  background: transparent;
+  color: #e2e8f0;
+  padding: 0;
+}
+
+.wp-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  margin: 1.5em auto;
+  display: block;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.dark .wp-content img {
+  border-color: rgba(255,255,255,0.06);
+}
+
+.wp-content hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 2em 0;
+}
+
+.dark .wp-content hr {
+  border-color: rgba(255,255,255,0.08);
+}
+
+.wp-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.wp-content th {
+  background: #f3f4f6;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+}
+
+.dark .wp-content th {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.wp-content td {
+  padding: 0.6rem 1rem;
+  border: 1px solid #e5e7eb;
+  color: #374151;
+}
+
+.dark .wp-content td {
+  border-color: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.65);
+}
+html {
+  background-color: #0B0B0F;
+  color-scheme: dark light;
+}
+
+html.light {
+  background-color: #ffffff;
+  color-scheme: light;
+}
+/* globals.css */
+
+/* Force dark background immediately — flash prevent */
+html.dark {
+  background-color: #0F0F15 !important;
+}
+
+html.dark body {
+  background-color: #0B0B0F !important;
+  color: #ffffff !important;
+}
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroSlideRight {
+  from { opacity: 0; transform: translateX(60px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes starPop {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes testimonialIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
